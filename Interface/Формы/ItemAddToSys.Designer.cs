@@ -60,6 +60,7 @@ namespace Interface.Формы
             // 
             // textBox3
             // 
+            this.textBox3.Font = new System.Drawing.Font("Georgia", 9F);
             this.textBox3.Location = new System.Drawing.Point(46, 101);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
@@ -83,6 +84,7 @@ namespace Interface.Формы
             // 
             this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBox1.Font = new System.Drawing.Font("Georgia", 9F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(46, 29);
             this.comboBox1.Name = "comboBox1";

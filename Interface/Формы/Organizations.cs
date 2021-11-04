@@ -20,10 +20,10 @@ namespace Interface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add("ООО \"Рога и Копыта\"", "Перекопская 13", "Приют");
-            dataGridView1.Rows.Add("ООО \"Дружок\"", "Мельникайте 93а", "Ветклиника");
-            dataGridView1.Rows.Add("ООО \"Котопес\"", "Грибоедоова 13", "Ветклиника");
-            dataGridView1.Rows.Add("ООО \"Простоквашино\"", "Пушкина 32", "Ветслужба");
+            dataGridView1.Rows.Add("Рога и Копыта", "Перекопская 13", "Приют");
+            dataGridView1.Rows.Add("Дружок", "Мельникайте 93а", "Ветклиника");
+            dataGridView1.Rows.Add("Котопес", "Грибоедоова 13", "Ветклиника");
+            dataGridView1.Rows.Add("Простоквашино", "Пушкина 32", "Ветслужба");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
