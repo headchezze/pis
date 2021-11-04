@@ -47,9 +47,9 @@ namespace Interface.Формы
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 32);
+            this.label1.Size = new System.Drawing.Size(117, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Рога и Копыта\r\n1111";
+            this.label1.Text = "Рога и Копыта\r\n";
             // 
             // dataGridView1
             // 
