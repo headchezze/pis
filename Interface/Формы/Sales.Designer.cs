@@ -87,9 +87,9 @@ namespace Interface.Формы
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(12, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 15);
+            this.label2.Size = new System.Drawing.Size(102, 30);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Перекопская 13\r\n";
+            this.label2.Text = "Перекопская 13\r\n42432";
             // 
             // button1
             // 
