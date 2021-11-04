@@ -157,7 +157,7 @@ namespace Interface
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.Control;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button6.Location = new System.Drawing.Point(354, 380);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(108, 45);
