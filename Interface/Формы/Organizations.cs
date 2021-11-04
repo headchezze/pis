@@ -37,12 +37,6 @@ namespace Interface
             comboBox1.SelectedValue = null;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Sales s = new Sales();
-            s.Show();
-            this.Hide();
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -54,12 +48,6 @@ namespace Interface
         {
             ItemAddToSys itemAdd = new ItemAddToSys();
             itemAdd.Show();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            AddItemToAdress addItemToAdress = new AddItemToAdress();
-            addItemToAdress.ShowDialog();
         }
     }
 }
