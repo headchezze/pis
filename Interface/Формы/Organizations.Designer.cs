@@ -82,7 +82,7 @@ namespace Interface
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Georgia", 12F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(599, 35);
+            this.button1.Location = new System.Drawing.Point(600, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 45);
             this.button1.TabIndex = 4;
@@ -115,9 +115,9 @@ namespace Interface
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 87);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(815, 381);
+            this.dataGridView1.Size = new System.Drawing.Size(815, 397);
             this.dataGridView1.TabIndex = 5;
             // 
             // Column1
