@@ -167,6 +167,8 @@ namespace Interface.Формы
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(585, 529);
+            this.MinimumSize = new System.Drawing.Size(585, 529);
             this.Name = "AddItemToAdress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление товара ";

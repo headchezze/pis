@@ -128,7 +128,10 @@ namespace Interface.Формы
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(288, 302);
+            this.MinimumSize = new System.Drawing.Size(288, 302);
             this.Name = "AdressAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление адреса";
             this.Load += new System.EventHandler(this.AdressAdd_Load);
             this.ResumeLayout(false);
