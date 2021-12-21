@@ -70,12 +70,6 @@
     <Compile Include="Формы\AdressAdd.Designer.cs">
       <DependentUpon>AdressAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Формы\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Формы\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Формы\ItemAddToSys.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,9 +95,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Формы\AdressAdd.resx">
       <DependentUpon>AdressAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Формы\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Формы\ItemAddToSys.resx">
       <DependentUpon>ItemAddToSys.cs</DependentUpon>

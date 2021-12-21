@@ -18,7 +18,7 @@ namespace ServerSide
     public partial class pisanimalsEntities : DbContext
     {
         public pisanimalsEntities()
-            : base("name=pisanimalsEntities")
+            : base("name=pisanimalsEntities1")
         {
         }
     

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSide", "ServerSide\ServerSide.csproj", "{8FE98973-66F0-4A02-9857-82375EF58FF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFLibrary", "WCFLibrary\WCFLibrary.csproj", "{76CA35EC-6B0A-44CD-9A46-EDE268E82688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8FE98973-66F0-4A02-9857-82375EF58FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FE98973-66F0-4A02-9857-82375EF58FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FE98973-66F0-4A02-9857-82375EF58FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CA35EC-6B0A-44CD-9A46-EDE268E82688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CA35EC-6B0A-44CD-9A46-EDE268E82688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CA35EC-6B0A-44CD-9A46-EDE268E82688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CA35EC-6B0A-44CD-9A46-EDE268E82688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
