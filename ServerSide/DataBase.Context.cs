@@ -15,10 +15,10 @@ namespace ServerSide
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class pisanimalsEntities1 : DbContext
+    public partial class pisanimalsEntities : DbContext
     {
-        public pisanimalsEntities1()
-            : base("name=pisanimalsEntities1")
+        public pisanimalsEntities()
+            : base("name=pisanimalsEntities")
         {
         }
     
