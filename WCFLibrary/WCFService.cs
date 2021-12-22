@@ -8,50 +8,68 @@ using System.Text;
 namespace WCFLibrary
 {
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "WCFService" в коде и файле конфигурации.
+    [ServiceBehavior(InstanceContextMode =InstanceContextMode.Single)]
     public class WCFService : IWCFService
     {
-        public void AddProductToOffice(ICollection<OfficeProductsRepresent> officeProductsRepresent)
+        List<ServerUser> users = new List<ServerUser>();
+
+        static int nextID = 1;
+
+        public void AddProductToOffice(int id, ICollection<OfficeProductsRepresent> officeProductsRepresent)
         {
             throw new NotImplementedException();
         }
 
         public int Connect()
         {
-            throw new NotImplementedException();
+            ServerUser user = new ServerUser(nextID, OperationContext.Current);
+            users.Add(user);
+
+            nextID++;
+
+            return user.ID;
         }
 
-        public void CreateNewOffice(OfficeRepresent officeRepresent, OfficeRepresent to = null)
+        public void CreateNewOffice(int id, OfficeRepresent officeRepresent, OfficeRepresent to = null)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateNewProduct(ProductRepresent productRepresent)
+        public void CreateNewProduct(int id, ProductRepresent productRepresent)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteOffice(OfficeRepresent officeRepresent)
+        public void DeleteOffice(int id, OfficeRepresent officeRepresent)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteProductFromOffice(OfficeProductsRepresent officeProductsRepresent)
+        public void DeleteProductFromOffice(int id, OfficeProductsRepresent officeProductsRepresent)
         {
             throw new NotImplementedException();
         }
 
-        public int Disconnect(int id)
+        public void Disconnect(int id)
         {
-            throw new NotImplementedException();
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if(user != null)
+            {
+                users.Remove(user);
+            }
         }
 
-        public void DoWork()
+        public ICollection<OfficeRepresent> FindOrgs(int id, string orgName = "", string orgType = "")
         {
-        }
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                ICollection<OfficeRepresent> foundOrg = user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsCallback(orgName, orgType);
 
-        public ICollection<OfficeRepresent> FindOrgs(string orgName = "", string orgType = "")
-        {
-            throw new NotImplementedException();
+                return foundOrg;
+            }
+
+            return null;
         }
 
         public ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation)

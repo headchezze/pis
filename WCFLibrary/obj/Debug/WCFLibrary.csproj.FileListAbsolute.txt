@@ -1,0 +1,7 @@
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\WCFLibrary.dll.config
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\WCFLibrary.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\WCFLibrary.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.csproj.AssemblyReference.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.csproj.CoreCompileInputs.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.pdb

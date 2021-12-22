@@ -8,7 +8,7 @@ using System.Text;
 namespace WCFLibrary
 {
     // ПРИМЕЧАНИЕ. Можно использовать команду "Переименовать" в меню "Рефакторинг", чтобы изменить имя интерфейса "IWCFService" в коде и файле конфигурации.
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IWCFServiceCallback))]
     public interface IWCFService
     {
 
@@ -16,28 +16,51 @@ namespace WCFLibrary
         int Connect();
 
         [OperationContract]
-        int Disconnect(int id);
+        void Disconnect(int id);
 
         [OperationContract]
         ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation);
 
         [OperationContract]
-        ICollection<OfficeRepresent> FindOrgs(string orgName = "", string orgType = "");
+        ICollection<OfficeRepresent> FindOrgs(int id, string orgName = "", string orgType = "");
 
         [OperationContract]
-        void CreateNewOffice(OfficeRepresent officeRepresent, OfficeRepresent to = null);
+        void CreateNewOffice(int id, OfficeRepresent officeRepresent, OfficeRepresent to = null);
 
         [OperationContract]
-        void AddProductToOffice(ICollection<OfficeProductsRepresent> officeProductsRepresent);
+        void AddProductToOffice(int id, ICollection<OfficeProductsRepresent> officeProductsRepresent);
 
         [OperationContract]
-        void CreateNewProduct(ProductRepresent productRepresent);
+        void CreateNewProduct(int id, ProductRepresent productRepresent);
 
         [OperationContract]
-        void DeleteProductFromOffice(OfficeProductsRepresent officeProductsRepresent);
+        void DeleteProductFromOffice(int id, OfficeProductsRepresent officeProductsRepresent);
 
         [OperationContract]
-        void DeleteOffice(OfficeRepresent officeRepresent);
+        void DeleteOffice(int id, OfficeRepresent officeRepresent);
 
+    }
+
+    public interface IWCFServiceCallback
+    {
+        [OperationContract]
+        string CreateNewOfficeCallback(OfficeRepresent officeRepresent, OfficeRepresent to = null);
+
+        [OperationContract]
+        string AddProductToOfficeCallback(ICollection<OfficeProductsRepresent> officeProductsRepresent);
+
+        [OperationContract]
+        string CreateNewProductCallback(ProductRepresent productRepresent);
+
+        [OperationContract]
+        string DeleteProductFromOfficeCallback(OfficeProductsRepresent officeProductsRepresent);
+
+        [OperationContract]
+        string DeleteOfficeCallback(OfficeRepresent officeRepresent);
+        [OperationContract]
+        ICollection<OfficeProductsRepresent> FindProductsByOfficeCallback(string orgName, string officeLocation);
+
+        [OperationContract]
+        ICollection<OfficeRepresent> FindOrgsCallback(string orgName = "", string orgType = "");
     }
 }
