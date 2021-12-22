@@ -42,7 +42,7 @@ namespace Interface
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.exportXLSX = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -179,17 +179,18 @@ namespace Interface
             this.button5.Text = "Удалить адрес";
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // exportXLSX
             // 
-            this.button7.BackColor = System.Drawing.Color.SlateBlue;
-            this.button7.Font = new System.Drawing.Font("Georgia", 10F);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(544, 488);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(273, 30);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Экспорт в Excel";
-            this.button7.UseVisualStyleBackColor = false;
+            this.exportXLSX.BackColor = System.Drawing.Color.SlateBlue;
+            this.exportXLSX.Font = new System.Drawing.Font("Georgia", 10F);
+            this.exportXLSX.ForeColor = System.Drawing.Color.White;
+            this.exportXLSX.Location = new System.Drawing.Point(544, 488);
+            this.exportXLSX.Name = "exportXLSX";
+            this.exportXLSX.Size = new System.Drawing.Size(273, 30);
+            this.exportXLSX.TabIndex = 11;
+            this.exportXLSX.Text = "Экспорт в Excel";
+            this.exportXLSX.UseVisualStyleBackColor = false;
+            this.exportXLSX.Click += new System.EventHandler(this.ExportXLSX_Click);
             // 
             // label2
             // 
@@ -236,7 +237,7 @@ namespace Interface
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.exportXLSX);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -266,7 +267,7 @@ namespace Interface
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button exportXLSX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
