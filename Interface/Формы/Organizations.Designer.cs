@@ -46,6 +46,7 @@ namespace Interface
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.autorizButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,6 +183,7 @@ namespace Interface
             // exportXLSX
             // 
             this.exportXLSX.BackColor = System.Drawing.Color.SlateBlue;
+            this.exportXLSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exportXLSX.Font = new System.Drawing.Font("Georgia", 10F);
             this.exportXLSX.ForeColor = System.Drawing.Color.White;
             this.exportXLSX.Location = new System.Drawing.Point(544, 488);
@@ -228,12 +230,27 @@ namespace Interface
             this.label3.TabIndex = 14;
             this.label3.Text = "Меню оператора";
             // 
+            // autorizButton
+            // 
+            this.autorizButton.BackColor = System.Drawing.Color.SlateBlue;
+            this.autorizButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.autorizButton.Font = new System.Drawing.Font("Georgia", 10F);
+            this.autorizButton.ForeColor = System.Drawing.Color.White;
+            this.autorizButton.Location = new System.Drawing.Point(2, 488);
+            this.autorizButton.Name = "autorizButton";
+            this.autorizButton.Size = new System.Drawing.Size(217, 30);
+            this.autorizButton.TabIndex = 15;
+            this.autorizButton.Text = "Войти в систему";
+            this.autorizButton.UseVisualStyleBackColor = false;
+            this.autorizButton.Click += new System.EventHandler(this.AutorizButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(820, 599);
+            this.Controls.Add(this.autorizButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
@@ -274,6 +291,7 @@ namespace Interface
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button autorizButton;
     }
 }
 

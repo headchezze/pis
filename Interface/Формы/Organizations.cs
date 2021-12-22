@@ -51,6 +51,12 @@ namespace Interface
             itemAdd.Show();
         }
 
+        private void AutorizButton_Click(object sender, EventArgs e)
+        {
+            ItemAddToSys itemAdd = new ItemAddToSys();
+            itemAdd.Show();
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
