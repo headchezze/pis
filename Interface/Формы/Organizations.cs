@@ -53,7 +53,7 @@ namespace Interface
 
         private void AutorizButton_Click(object sender, EventArgs e)
         {
-            ItemAddToSys itemAdd = new ItemAddToSys();
+            AutorizationSys itemAdd = new AutorizationSys();
             itemAdd.Show();
         }
 

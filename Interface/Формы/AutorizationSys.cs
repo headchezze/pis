@@ -16,5 +16,10 @@ namespace Interface.Формы
         {
             InitializeComponent();
         }
+
+        private void CloseAutorizBut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
