@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pisanimalsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OfficeProducts">
+    <Key>
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cost" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="CountProduct" Type="Int32" Nullable="false" />
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Offices" Relationship="Self.FK_OfficeProduct_To_Office" FromRole="OfficeProducts" ToRole="Offices" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_OfficeProduct_To_Products" FromRole="OfficeProducts" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Offices">
+    <Key>
+      <PropertyRef Name="IdOffice" />
+    </Key>
+    <Property Name="IdOffice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adress" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrgName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OfficeProducts" Relationship="Self.FK_OfficeProduct_To_Office" FromRole="Offices" ToRole="OfficeProducts" />
+    <NavigationProperty Name="Orgs" Relationship="Self.FK_Office_Org" FromRole="Offices" ToRole="Orgs" />
+  </EntityType>
+  <EntityType Name="Orgs">
+    <Key>
+      <PropertyRef Name="OrgName" />
+    </Key>
+    <Property Name="OrgName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Offices" Relationship="Self.FK_Office_Org" FromRole="Orgs" ToRole="Offices" />
+    <NavigationProperty Name="OrgTypes" Relationship="Self.FK_Org_To_OrgType" FromRole="Orgs" ToRole="OrgTypes" />
+    <NavigationProperty Name="Workers" Relationship="Self.FK_Worker_To_Org" FromRole="Orgs" ToRole="Workers" />
+  </EntityType>
+  <EntityType Name="OrgTypes">
+    <Key>
+      <PropertyRef Name="TypeName" />
+    </Key>
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orgs" Relationship="Self.FK_Org_To_OrgType" FromRole="OrgTypes" ToRole="Orgs" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductName" />
+    </Key>
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Desription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OfficeProducts" Relationship="Self.FK_OfficeProduct_To_Products" FromRole="Products" ToRole="OfficeProducts" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="IdWorker" />
+    </Key>
+    <Property Name="IdWorker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Org" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orgs" Relationship="Self.FK_Worker_To_Org" FromRole="Workers" ToRole="Orgs" />
+  </EntityType>
+  <Association Name="FK_OfficeProduct_To_Office">
+    <End Role="Offices" Type="Self.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OfficeProducts" Type="Self.OfficeProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices">
+        <PropertyRef Name="IdOffice" />
+      </Principal>
+      <Dependent Role="OfficeProducts">
+        <PropertyRef Name="Office" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfficeProduct_To_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="OfficeProducts" Type="Self.OfficeProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductName" />
+      </Principal>
+      <Dependent Role="OfficeProducts">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Office_Org">
+    <End Role="Orgs" Type="Self.Orgs" Multiplicity="1" />
+    <End Role="Offices" Type="Self.Offices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orgs">
+        <PropertyRef Name="OrgName" />
+      </Principal>
+      <Dependent Role="Offices">
+        <PropertyRef Name="OrgName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Org_To_OrgType">
+    <End Role="OrgTypes" Type="Self.OrgTypes" Multiplicity="1" />
+    <End Role="Orgs" Type="Self.Orgs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrgTypes">
+        <PropertyRef Name="TypeName" />
+      </Principal>
+      <Dependent Role="Orgs">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_To_Org">
+    <End Role="Orgs" Type="Self.Orgs" Multiplicity="1" />
+    <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orgs">
+        <PropertyRef Name="OrgName" />
+      </Principal>
+      <Dependent Role="Workers">
+        <PropertyRef Name="Org" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pisanimalsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OfficeProducts" EntityType="Self.OfficeProducts" />
+    <EntitySet Name="Offices" EntityType="Self.Offices" />
+    <EntitySet Name="Orgs" EntityType="Self.Orgs" />
+    <EntitySet Name="OrgTypes" EntityType="Self.OrgTypes" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Workers" EntityType="Self.Workers" />
+    <AssociationSet Name="FK_OfficeProduct_To_Office" Association="Self.FK_OfficeProduct_To_Office">
+      <End Role="Offices" EntitySet="Offices" />
+      <End Role="OfficeProducts" EntitySet="OfficeProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfficeProduct_To_Products" Association="Self.FK_OfficeProduct_To_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OfficeProducts" EntitySet="OfficeProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Office_Org" Association="Self.FK_Office_Org">
+      <End Role="Orgs" EntitySet="Orgs" />
+      <End Role="Offices" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Org_To_OrgType" Association="Self.FK_Org_To_OrgType">
+      <End Role="OrgTypes" EntitySet="OrgTypes" />
+      <End Role="Orgs" EntitySet="Orgs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_To_Org" Association="Self.FK_Worker_To_Org">
+      <End Role="Orgs" EntitySet="Orgs" />
+      <End Role="Workers" EntitySet="Workers" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(pisanimalsModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(pisanimalsModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

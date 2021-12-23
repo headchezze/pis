@@ -4,4 +4,9 @@ C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\WCFLibrary.pd
 C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.csproj.CoreCompileInputs.cache
 C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.dll
 C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\EntityFramework.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\EntityFramework.xml
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.csproj.CopyComplete
 C:\Users\headchezze-thinkpad\Source\Repos\pis\WCFLibrary\obj\Debug\WCFLibrary.csproj.AssemblyReference.cache

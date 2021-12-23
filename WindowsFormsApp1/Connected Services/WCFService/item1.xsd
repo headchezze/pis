@@ -10,18 +10,21 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="OfficeProductsRepresent" nillable="true" type="tns:OfficeProductsRepresent" />
-  <xs:complexType name="ArrayOfOfficeRepresent">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OfficeRepresent" nillable="true" type="tns:OfficeRepresent" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOfficeRepresent" nillable="true" type="tns:ArrayOfOfficeRepresent" />
   <xs:complexType name="OfficeRepresent">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="OfficeRepresent" nillable="true" type="tns:OfficeRepresent" />
   <xs:complexType name="ProductRepresent">
     <xs:sequence />
   </xs:complexType>
   <xs:element name="ProductRepresent" nillable="true" type="tns:ProductRepresent" />
+  <xs:complexType name="ArrayOfOfficeRepresent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OfficeRepresent" nillable="true" type="tns:OfficeRepresent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOfficeRepresent" nillable="true" type="tns:ArrayOfOfficeRepresent" />
 </xs:schema>

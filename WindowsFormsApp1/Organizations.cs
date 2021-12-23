@@ -8,13 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Interface.WCFService;
+using WindowsFormsApp1.WCFService;
+using System.Data.SqlClient;
+using System.Data.Sql;
 
 namespace Interface 
 {
-    public partial class Form1 : Form, Interface.WCFService.IWCFServiceCallback
+    public partial class Form1 : Form, IWCFServiceCallback
     {
-        private WCFService.WCFServiceClient client;
+        private WCFServiceClient client;
         private int ID;
         public Form1()
         {
@@ -121,15 +123,31 @@ namespace Interface
             throw new NotImplementedException();
         }
 
-        public OfficeRepresent[] FindOrgsCallback(string orgName, string orgType)
-        {
-            return null;
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             client.Disconnect(ID);
             client = null;
+        }
+
+
+        public void FindOrgsCallback(OfficeRepresent[] officeRepresents)
+        {
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                foreach (var officeRepresent in officeRepresents)
+                {
+                    dataGridView1.Rows.Add(officeRepresent.Organization, officeRepresent.Location, "Allo");
+                }
+            }
+            else
+            {
+                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            client.FindOrgs(ID, "", "");
         }
     }
 }

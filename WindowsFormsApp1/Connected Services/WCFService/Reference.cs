@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Interface.WCFService {
+namespace WindowsFormsApp1.WCFService {
     using System.Runtime.Serialization;
     using System;
     
@@ -51,6 +51,12 @@ namespace Interface.WCFService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrganizationField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -58,6 +64,32 @@ namespace Interface.WCFService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Organization {
+            get {
+                return this.OrganizationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrganizationField, value) != true)) {
+                    this.OrganizationField = value;
+                    this.RaisePropertyChanged("Organization");
+                }
             }
         }
         
@@ -101,7 +133,7 @@ namespace Interface.WCFService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFService.IWCFService", CallbackContract=typeof(Interface.WCFService.IWCFServiceCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFService.IWCFService", CallbackContract=typeof(WindowsFormsApp1.WCFService.IWCFServiceCallback))]
     public interface IWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/Connect", ReplyAction="http://tempuri.org/IWCFService/ConnectResponse")]
@@ -117,80 +149,80 @@ namespace Interface.WCFService {
         System.Threading.Tasks.Task DisconnectAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOffice", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeResponse")]
-        Interface.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation);
+        WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOffice", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeResponse")]
-        System.Threading.Tasks.Task<Interface.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation);
+        System.Threading.Tasks.Task<WindowsFormsApp1.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgs", ReplyAction="http://tempuri.org/IWCFService/FindOrgsResponse")]
-        Interface.WCFService.OfficeRepresent[] FindOrgs(int id, string orgName, string orgType);
+        void FindOrgs(int id, string orgName, string orgType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgs", ReplyAction="http://tempuri.org/IWCFService/FindOrgsResponse")]
-        System.Threading.Tasks.Task<Interface.WCFService.OfficeRepresent[]> FindOrgsAsync(int id, string orgName, string orgType);
+        System.Threading.Tasks.Task FindOrgsAsync(int id, string orgName, string orgType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewOffice", ReplyAction="http://tempuri.org/IWCFService/CreateNewOfficeResponse")]
-        void CreateNewOffice(int id, Interface.WCFService.OfficeRepresent officeRepresent, Interface.WCFService.OfficeRepresent to);
+        void CreateNewOffice(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent, WindowsFormsApp1.WCFService.OfficeRepresent to);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewOffice", ReplyAction="http://tempuri.org/IWCFService/CreateNewOfficeResponse")]
-        System.Threading.Tasks.Task CreateNewOfficeAsync(int id, Interface.WCFService.OfficeRepresent officeRepresent, Interface.WCFService.OfficeRepresent to);
+        System.Threading.Tasks.Task CreateNewOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent, WindowsFormsApp1.WCFService.OfficeRepresent to);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddProductToOffice", ReplyAction="http://tempuri.org/IWCFService/AddProductToOfficeResponse")]
-        void AddProductToOffice(int id, Interface.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
+        void AddProductToOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddProductToOffice", ReplyAction="http://tempuri.org/IWCFService/AddProductToOfficeResponse")]
-        System.Threading.Tasks.Task AddProductToOfficeAsync(int id, Interface.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
+        System.Threading.Tasks.Task AddProductToOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewProduct", ReplyAction="http://tempuri.org/IWCFService/CreateNewProductResponse")]
-        void CreateNewProduct(int id, Interface.WCFService.ProductRepresent productRepresent);
+        void CreateNewProduct(int id, WindowsFormsApp1.WCFService.ProductRepresent productRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewProduct", ReplyAction="http://tempuri.org/IWCFService/CreateNewProductResponse")]
-        System.Threading.Tasks.Task CreateNewProductAsync(int id, Interface.WCFService.ProductRepresent productRepresent);
+        System.Threading.Tasks.Task CreateNewProductAsync(int id, WindowsFormsApp1.WCFService.ProductRepresent productRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeResponse")]
-        void DeleteProductFromOffice(int id, Interface.WCFService.OfficeProductsRepresent officeProductsRepresent);
+        void DeleteProductFromOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeResponse")]
-        System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, Interface.WCFService.OfficeProductsRepresent officeProductsRepresent);
+        System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteOfficeResponse")]
-        void DeleteOffice(int id, Interface.WCFService.OfficeRepresent officeRepresent);
+        void DeleteOffice(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteOfficeResponse")]
-        System.Threading.Tasks.Task DeleteOfficeAsync(int id, Interface.WCFService.OfficeRepresent officeRepresent);
+        System.Threading.Tasks.Task DeleteOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IWCFServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/CreateNewOfficeCallbackResponse")]
-        string CreateNewOfficeCallback(Interface.WCFService.OfficeRepresent officeRepresent, Interface.WCFService.OfficeRepresent to);
+        string CreateNewOfficeCallback(WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent, WindowsFormsApp1.WCFService.OfficeRepresent to);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/AddProductToOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/AddProductToOfficeCallbackResponse")]
-        string AddProductToOfficeCallback(Interface.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
+        string AddProductToOfficeCallback(WindowsFormsApp1.WCFService.OfficeProductsRepresent[] officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewProductCallback", ReplyAction="http://tempuri.org/IWCFService/CreateNewProductCallbackResponse")]
-        string CreateNewProductCallback(Interface.WCFService.ProductRepresent productRepresent);
+        string CreateNewProductCallback(WindowsFormsApp1.WCFService.ProductRepresent productRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeCallbackResponse")]
-        string DeleteProductFromOfficeCallback(Interface.WCFService.OfficeProductsRepresent officeProductsRepresent);
+        string DeleteProductFromOfficeCallback(WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/DeleteOfficeCallbackResponse")]
-        string DeleteOfficeCallback(Interface.WCFService.OfficeRepresent officeRepresent);
+        string DeleteOfficeCallback(WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeCallbackResponse")]
-        Interface.WCFService.OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation);
+        WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgsCallback", ReplyAction="http://tempuri.org/IWCFService/FindOrgsCallbackResponse")]
-        Interface.WCFService.OfficeRepresent[] FindOrgsCallback(string orgName, string orgType);
+        void FindOrgsCallback(WindowsFormsApp1.WCFService.OfficeRepresent[] officeRepresents);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWCFServiceChannel : Interface.WCFService.IWCFService, System.ServiceModel.IClientChannel {
+    public interface IWCFServiceChannel : WindowsFormsApp1.WCFService.IWCFService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WCFServiceClient : System.ServiceModel.DuplexClientBase<Interface.WCFService.IWCFService>, Interface.WCFService.IWCFService {
+    public partial class WCFServiceClient : System.ServiceModel.DuplexClientBase<WindowsFormsApp1.WCFService.IWCFService>, WindowsFormsApp1.WCFService.IWCFService {
         
         public WCFServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -228,59 +260,59 @@ namespace Interface.WCFService {
             return base.Channel.DisconnectAsync(id);
         }
         
-        public Interface.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation) {
+        public WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation) {
             return base.Channel.FindProductsByOffice(orgName, officeLocation);
         }
         
-        public System.Threading.Tasks.Task<Interface.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation) {
+        public System.Threading.Tasks.Task<WindowsFormsApp1.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation) {
             return base.Channel.FindProductsByOfficeAsync(orgName, officeLocation);
         }
         
-        public Interface.WCFService.OfficeRepresent[] FindOrgs(int id, string orgName, string orgType) {
-            return base.Channel.FindOrgs(id, orgName, orgType);
+        public void FindOrgs(int id, string orgName, string orgType) {
+            base.Channel.FindOrgs(id, orgName, orgType);
         }
         
-        public System.Threading.Tasks.Task<Interface.WCFService.OfficeRepresent[]> FindOrgsAsync(int id, string orgName, string orgType) {
+        public System.Threading.Tasks.Task FindOrgsAsync(int id, string orgName, string orgType) {
             return base.Channel.FindOrgsAsync(id, orgName, orgType);
         }
         
-        public void CreateNewOffice(int id, Interface.WCFService.OfficeRepresent officeRepresent, Interface.WCFService.OfficeRepresent to) {
+        public void CreateNewOffice(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent, WindowsFormsApp1.WCFService.OfficeRepresent to) {
             base.Channel.CreateNewOffice(id, officeRepresent, to);
         }
         
-        public System.Threading.Tasks.Task CreateNewOfficeAsync(int id, Interface.WCFService.OfficeRepresent officeRepresent, Interface.WCFService.OfficeRepresent to) {
+        public System.Threading.Tasks.Task CreateNewOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent, WindowsFormsApp1.WCFService.OfficeRepresent to) {
             return base.Channel.CreateNewOfficeAsync(id, officeRepresent, to);
         }
         
-        public void AddProductToOffice(int id, Interface.WCFService.OfficeProductsRepresent[] officeProductsRepresent) {
+        public void AddProductToOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] officeProductsRepresent) {
             base.Channel.AddProductToOffice(id, officeProductsRepresent);
         }
         
-        public System.Threading.Tasks.Task AddProductToOfficeAsync(int id, Interface.WCFService.OfficeProductsRepresent[] officeProductsRepresent) {
+        public System.Threading.Tasks.Task AddProductToOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] officeProductsRepresent) {
             return base.Channel.AddProductToOfficeAsync(id, officeProductsRepresent);
         }
         
-        public void CreateNewProduct(int id, Interface.WCFService.ProductRepresent productRepresent) {
+        public void CreateNewProduct(int id, WindowsFormsApp1.WCFService.ProductRepresent productRepresent) {
             base.Channel.CreateNewProduct(id, productRepresent);
         }
         
-        public System.Threading.Tasks.Task CreateNewProductAsync(int id, Interface.WCFService.ProductRepresent productRepresent) {
+        public System.Threading.Tasks.Task CreateNewProductAsync(int id, WindowsFormsApp1.WCFService.ProductRepresent productRepresent) {
             return base.Channel.CreateNewProductAsync(id, productRepresent);
         }
         
-        public void DeleteProductFromOffice(int id, Interface.WCFService.OfficeProductsRepresent officeProductsRepresent) {
+        public void DeleteProductFromOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent) {
             base.Channel.DeleteProductFromOffice(id, officeProductsRepresent);
         }
         
-        public System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, Interface.WCFService.OfficeProductsRepresent officeProductsRepresent) {
+        public System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent) {
             return base.Channel.DeleteProductFromOfficeAsync(id, officeProductsRepresent);
         }
         
-        public void DeleteOffice(int id, Interface.WCFService.OfficeRepresent officeRepresent) {
+        public void DeleteOffice(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent) {
             base.Channel.DeleteOffice(id, officeRepresent);
         }
         
-        public System.Threading.Tasks.Task DeleteOfficeAsync(int id, Interface.WCFService.OfficeRepresent officeRepresent) {
+        public System.Threading.Tasks.Task DeleteOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent) {
             return base.Channel.DeleteOfficeAsync(id, officeRepresent);
         }
     }

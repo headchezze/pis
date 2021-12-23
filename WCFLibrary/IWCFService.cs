@@ -22,7 +22,7 @@ namespace WCFLibrary
         ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation);
 
         [OperationContract]
-        ICollection<OfficeRepresent> FindOrgs(int id, string orgName = "", string orgType = "");
+        void FindOrgs(int id, string orgName = "", string orgType = "");
 
         [OperationContract]
         void CreateNewOffice(int id, OfficeRepresent officeRepresent, OfficeRepresent to = null);
@@ -61,6 +61,6 @@ namespace WCFLibrary
         ICollection<OfficeProductsRepresent> FindProductsByOfficeCallback(string orgName, string officeLocation);
 
         [OperationContract]
-        ICollection<OfficeRepresent> FindOrgsCallback(string orgName = "", string orgType = "");
+        void FindOrgsCallback(List<OfficeRepresent> officeRepresents);
     }
 }

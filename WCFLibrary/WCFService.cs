@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Data.SqlClient;
 
 namespace WCFLibrary
 {
@@ -59,17 +60,24 @@ namespace WCFLibrary
             }
         }
 
-        public ICollection<OfficeRepresent> FindOrgs(int id, string orgName = "", string orgType = "")
+        public void FindOrgs(int id, string orgName = "", string orgType = "")
         {
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
             {
-                ICollection<OfficeRepresent> foundOrg = user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsCallback(orgName, orgType);
+                var context = new pisanimalsEntities();
+                var orgs = context.Orgs.ToList();
+                List<OfficeRepresent> list = new List<OfficeRepresent>();
 
-                return foundOrg;
+                foreach (Orgs org in orgs)
+                {
+                    Console.WriteLine(org.OrgName + " " + org.Type + "\n");
+                    list.Add(new OfficeRepresent(org.OrgName, org.Type));
+                }
+
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsCallback(list);
+
             }
-
-            return null;
         }
 
         public ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation)

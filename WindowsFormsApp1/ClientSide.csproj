@@ -128,10 +128,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WCFService\WCFService.wsdl" />
-    <None Include="Connected Services\WCFService\WindowsFormsApp1.WCFService.OfficeProductsRepresent.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WCFService\WindowsFormsApp1.WCFService.OfficeRepresent.datasource">
+    <None Include="Connected Services\WCFService\WindowsFormsApp1.WCFService.OfficeProductsRepresent1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

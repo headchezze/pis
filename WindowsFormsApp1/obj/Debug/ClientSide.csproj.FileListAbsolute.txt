@@ -1,0 +1,16 @@
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\ClientSide.csproj.AssemblyReference.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\ClientSide.csproj.ResolveComReference.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.AddItemToAdress.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.AdressAdd.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.AutorizationSys.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.ItemAddToSys.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.Form1.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\Interface.Sales.resources
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\ClientSide.csproj.GenerateResource.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\ClientSide.csproj.CoreCompileInputs.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\headchezze-thinkpad\Source\Repos\pis\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
