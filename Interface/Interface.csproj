@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,11 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -58,57 +54,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Формы\AddItemToAdress.cs">
+    <Compile Include="Forms\AddItemToAdress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\AddItemToAdress.Designer.cs">
+    <Compile Include="Forms\AddItemToAdress.Designer.cs">
       <DependentUpon>AddItemToAdress.cs</DependentUpon>
     </Compile>
-    <Compile Include="Формы\AdressAdd.cs">
+    <Compile Include="Forms\AdressAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\AdressAdd.Designer.cs">
+    <Compile Include="Forms\AdressAdd.Designer.cs">
       <DependentUpon>AdressAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Формы\AutorizationSys.cs">
+    <Compile Include="Forms\AutorizationSys.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\AutorizationSys.Designer.cs">
+    <Compile Include="Forms\AutorizationSys.Designer.cs">
       <DependentUpon>AutorizationSys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Формы\ItemAddToSys.cs">
+    <Compile Include="Forms\ItemAddToSys.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\ItemAddToSys.Designer.cs">
+    <Compile Include="Forms\ItemAddToSys.Designer.cs">
       <DependentUpon>ItemAddToSys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Формы\Organizations.cs">
+    <Compile Include="Forms\Organizations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\Organizations.Designer.cs">
+    <Compile Include="Forms\Organizations.Designer.cs">
       <DependentUpon>Organizations.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Формы\Sales.cs">
+    <Compile Include="Forms\Sales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Формы\Sales.Designer.cs">
+    <Compile Include="Forms\Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Формы\AddItemToAdress.resx">
+    <EmbeddedResource Include="Forms\AddItemToAdress.resx">
       <DependentUpon>AddItemToAdress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Формы\AdressAdd.resx">
+    <EmbeddedResource Include="Forms\AdressAdd.resx">
       <DependentUpon>AdressAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Формы\AutorizationSys.resx">
+    <EmbeddedResource Include="Forms\AutorizationSys.resx">
       <DependentUpon>AutorizationSys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Формы\ItemAddToSys.resx">
+    <EmbeddedResource Include="Forms\ItemAddToSys.resx">
       <DependentUpon>ItemAddToSys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Формы\Organizations.resx">
+    <EmbeddedResource Include="Forms\Organizations.resx">
       <DependentUpon>Organizations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -120,7 +116,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Формы\Sales.resx">
+    <EmbeddedResource Include="Forms\Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -173,12 +169,4 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

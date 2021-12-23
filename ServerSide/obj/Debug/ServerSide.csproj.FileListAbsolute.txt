@@ -13,3 +13,5 @@ C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\obj\Debug\ServerSide.cs
 C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\obj\Debug\ServerSide.csproj.CopyComplete
 C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\obj\Debug\ServerSide.exe
 C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\obj\Debug\ServerSide.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\ServerSide\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

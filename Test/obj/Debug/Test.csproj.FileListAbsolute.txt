@@ -1,0 +1,6 @@
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\bin\Debug\Test.exe.config
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\bin\Debug\Test.exe
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\bin\Debug\Test.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\obj\Debug\Test.exe
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Test\obj\Debug\Test.pdb

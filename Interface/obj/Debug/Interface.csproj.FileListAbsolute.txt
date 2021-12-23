@@ -31,11 +31,6 @@ D:\ProgRo\pis\Interface\obj\Debug\Interface.pdb
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\Interface.exe.config
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\Interface.exe
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\Interface.pdb
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\EntityFramework.dll
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\EntityFramework.xml
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.ResolveComReference.cache
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.Формы.AddItemToAdress.resources
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.Формы.AdressAdd.resources
@@ -46,6 +41,9 @@ C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.Prop
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.Формы.Sales.resources
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.GenerateResource.cache
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
-C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.CopyComplete
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.exe
 C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.pdb
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\Newtonsoft.Json.dll
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\bin\Debug\Newtonsoft.Json.xml
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.CopyComplete
+C:\Users\headchezze-thinkpad\Source\Repos\pis\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
