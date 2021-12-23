@@ -49,11 +49,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="FindOrgsResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="CreateNewOffice">
     <xs:complexType>
       <xs:sequence>
@@ -211,11 +206,6 @@
       <xs:sequence>
         <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresents" nillable="true" type="q15:ArrayOfOfficeRepresent" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="FindOrgsCallbackResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

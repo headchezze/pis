@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 namespace WCFLibrary
 {
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "WCFService" в коде и файле конфигурации.
-    [ServiceBehavior(InstanceContextMode =InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class WCFService : IWCFService
     {
         List<ServerUser> users = new List<ServerUser>();

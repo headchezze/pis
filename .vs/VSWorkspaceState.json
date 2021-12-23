@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\ServerSide",
     "\\WCFLibrary"
   ],
-  "SelectedNode": "\\WCFLibrary\\IWCFService.cs",
+  "SelectedNode": "\\ServerSide\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

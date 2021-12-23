@@ -57,9 +57,6 @@
   <wsdl:message name="IWCFService_FindOrgs_InputMessage">
     <wsdl:part name="parameters" element="tns:FindOrgs" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_FindOrgs_OutputMessage">
-    <wsdl:part name="parameters" element="tns:FindOrgsResponse" />
-  </wsdl:message>
   <wsdl:message name="IWCFService_CreateNewOffice_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewOffice" />
   </wsdl:message>
@@ -129,9 +126,6 @@
   <wsdl:message name="IWCFService_FindOrgsCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:FindOrgsCallback" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_FindOrgsCallback_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:FindOrgsCallbackResponse" />
-  </wsdl:message>
   <wsdl:portType name="IWCFService">
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Connect" message="tns:IWCFService_Connect_InputMessage" />
@@ -147,7 +141,6 @@
     </wsdl:operation>
     <wsdl:operation name="FindOrgs">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/FindOrgs" message="tns:IWCFService_FindOrgs_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindOrgsResponse" message="tns:IWCFService_FindOrgs_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateNewOffice">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/CreateNewOffice" message="tns:IWCFService_CreateNewOffice_InputMessage" />
@@ -195,7 +188,6 @@
     </wsdl:operation>
     <wsdl:operation name="FindOrgsCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindOrgsCallback" message="tns:IWCFService_FindOrgsCallback_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/FindOrgsCallbackResponse" message="tns:IWCFService_FindOrgsCallback_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IWCFService" type="tns:IWCFService">
@@ -233,9 +225,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateNewOffice">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/CreateNewOffice" style="document" />
@@ -338,9 +327,6 @@
     </wsdl:operation>
     <wsdl:operation name="FindOrgsCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/FindOrgsCallback" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

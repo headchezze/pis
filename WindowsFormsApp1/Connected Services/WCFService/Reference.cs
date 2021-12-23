@@ -154,10 +154,10 @@ namespace WindowsFormsApp1.WCFService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOffice", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeResponse")]
         System.Threading.Tasks.Task<WindowsFormsApp1.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgs", ReplyAction="http://tempuri.org/IWCFService/FindOrgsResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgs")]
         void FindOrgs(int id, string orgName, string orgType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgs", ReplyAction="http://tempuri.org/IWCFService/FindOrgsResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgs")]
         System.Threading.Tasks.Task FindOrgsAsync(int id, string orgName, string orgType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewOffice", ReplyAction="http://tempuri.org/IWCFService/CreateNewOfficeResponse")]
@@ -212,7 +212,7 @@ namespace WindowsFormsApp1.WCFService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeCallbackResponse")]
         WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindOrgsCallback", ReplyAction="http://tempuri.org/IWCFService/FindOrgsCallbackResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgsCallback")]
         void FindOrgsCallback(WindowsFormsApp1.WCFService.OfficeRepresent[] officeRepresents);
     }
     

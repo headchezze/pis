@@ -21,7 +21,7 @@ namespace WCFLibrary
         [OperationContract]
         ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void FindOrgs(int id, string orgName = "", string orgType = "");
 
         [OperationContract]
@@ -60,7 +60,7 @@ namespace WCFLibrary
         [OperationContract]
         ICollection<OfficeProductsRepresent> FindProductsByOfficeCallback(string orgName, string officeLocation);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void FindOrgsCallback(List<OfficeRepresent> officeRepresents);
     }
 }
