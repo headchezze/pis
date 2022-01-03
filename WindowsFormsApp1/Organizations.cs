@@ -14,20 +14,38 @@ using System.Data.Sql;
 
 namespace Interface 
 {
-    public partial class Form1 : Form, IWCFServiceCallback
+    public partial class Form1 : Form
     {
-        private WCFServiceClient client;
         private int ID;
+        public delegate void FormHandler(int id, string orgName, string orgType);
+        public event FormHandler Notivfy;
+
+        public Dictionary<string,Form> forms = new Dictionary<string, Form>()
+        {
+            { "Autorization", new AutorizationSys() },
+            { "Office", new Sales() },
+            { "AddOffice",  new AdressAdd() }
+
+        };
+
         public Form1()
         {
             InitializeComponent();
         }
 
+        public void GetID(int id)
+        {
+            ID = id;
+        }
+
+        public void UpdateOrgList(DataGridViewRow row)
+        {
+            dataGridView1.Rows.Add(row);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
-            ID = client.Connect();
-            MessageBox.Show(ID.ToString());
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,8 +74,7 @@ namespace Interface
 
         private void AutorizButton_Click(object sender, EventArgs e)
         {
-            AutorizationSys itemAdd = new AutorizationSys();
-            itemAdd.Show();
+            forms["Autorization"].Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -93,61 +110,15 @@ namespace Interface
             exApp.Visible = true;
         }
 
-        public string CreateNewOfficeCallback(OfficeRepresent officeRepresent, OfficeRepresent to)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string AddProductToOfficeCallback(OfficeProductsRepresent[] officeProductsRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string CreateNewProductCallback(ProductRepresent productRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string DeleteProductFromOfficeCallback(OfficeProductsRepresent officeProductsRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string DeleteOfficeCallback(OfficeRepresent officeRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
-        public OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            client.Disconnect(ID);
-            client = null;
-        }
-
-
-        public void FindOrgsCallback(OfficeRepresent[] officeRepresents)
-        {
-            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
-            {
-                foreach (var officeRepresent in officeRepresents)
-                {
-                    dataGridView1.Rows.Add(officeRepresent.Organization, officeRepresent.Location, "Allo");
-                }
-            }
-            else
-            {
-                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            client.FindOrgs(ID, "", "");
+            Notivfy?.Invoke(ID, "", "");
         }
     }
 }
