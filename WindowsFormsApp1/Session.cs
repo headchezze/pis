@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Interface;
@@ -21,10 +22,9 @@ namespace WindowsFormsApp1
             ID = client.Connect();
             MainForm = form;
 
-            Application.Run(MainForm);
 
             MainForm.GetID(ID);
-            form.Notivfy += client.FindOrgs;
+            MainForm.Notivfy += client.FindOrgs;
 
         }
 
@@ -53,16 +53,18 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        public void FindOrgsCallback(OfficeRepresent[] officeRepresents)
+        public async void FindOrgsCallback(OfficeRepresent[] officeRepresents)
         {
+
             if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
             {
+                List<List<string>> values = new List<List<string>>();
                 foreach (var officeRepresent in officeRepresents)
                 {
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.SetValues(officeRepresent.Location, officeRepresent.Organization, "allo");
-                    MainForm.UpdateOrgList(row);
+                    values.Add(new List<string>() { officeRepresent.Organization, officeRepresent.Location });
                 }
+
+                MainForm.Invoke((Action<List<List<string>>>)MainForm.UpdateOrgList, values);
             }
             else
             {

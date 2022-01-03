@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.WCFService;
 using System.Data.SqlClient;
 using System.Data.Sql;
 
@@ -38,9 +37,12 @@ namespace Interface
             ID = id;
         }
 
-        public void UpdateOrgList(DataGridViewRow row)
+        public async void UpdateOrgList(List<List<string>> offices)
         {
-            dataGridView1.Rows.Add(row);
+            for (int i = 0; i < offices.Count; i++)
+            {
+                dataGridView1.Rows.Add(offices[i][0], offices[i][1], "test");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
