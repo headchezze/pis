@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="OfficeRepresent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductsRepresents" nillable="true" type="tns:ArrayOfOfficeProductsRepresent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OfficeRepresent" nillable="true" type="tns:OfficeRepresent" />
   <xs:complexType name="ArrayOfOfficeProductsRepresent">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OfficeProductsRepresent" nillable="true" type="tns:OfficeProductsRepresent" />
@@ -7,16 +16,14 @@
   </xs:complexType>
   <xs:element name="ArrayOfOfficeProductsRepresent" nillable="true" type="tns:ArrayOfOfficeProductsRepresent" />
   <xs:complexType name="OfficeProductsRepresent">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:element name="OfficeProductsRepresent" nillable="true" type="tns:OfficeProductsRepresent" />
-  <xs:complexType name="OfficeRepresent">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Office" nillable="true" type="tns:OfficeRepresent" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="OfficeRepresent" nillable="true" type="tns:OfficeRepresent" />
+  <xs:element name="OfficeProductsRepresent" nillable="true" type="tns:OfficeProductsRepresent" />
   <xs:complexType name="ProductRepresent">
     <xs:sequence />
   </xs:complexType>

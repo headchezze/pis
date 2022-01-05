@@ -15,35 +15,6 @@ namespace WindowsFormsApp1.WCFService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OfficeProductsRepresent", Namespace="http://schemas.datacontract.org/2004/07/WCFLibrary")]
-    [System.SerializableAttribute()]
-    public partial class OfficeProductsRepresent : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OfficeRepresent", Namespace="http://schemas.datacontract.org/2004/07/WCFLibrary")]
     [System.SerializableAttribute()]
     public partial class OfficeRepresent : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -55,7 +26,13 @@ namespace WindowsFormsApp1.WCFService {
         private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrgTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string OrganizationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.WCFService.OfficeProductsRepresent[] ProductsRepresentsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -81,6 +58,19 @@ namespace WindowsFormsApp1.WCFService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrgType {
+            get {
+                return this.OrgTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrgTypeField, value) != true)) {
+                    this.OrgTypeField = value;
+                    this.RaisePropertyChanged("OrgType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Organization {
             get {
                 return this.OrganizationField;
@@ -89,6 +79,112 @@ namespace WindowsFormsApp1.WCFService {
                 if ((object.ReferenceEquals(this.OrganizationField, value) != true)) {
                     this.OrganizationField = value;
                     this.RaisePropertyChanged("Organization");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WindowsFormsApp1.WCFService.OfficeProductsRepresent[] ProductsRepresents {
+            get {
+                return this.ProductsRepresentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsRepresentsField, value) != true)) {
+                    this.ProductsRepresentsField = value;
+                    this.RaisePropertyChanged("ProductsRepresents");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OfficeProductsRepresent", Namespace="http://schemas.datacontract.org/2004/07/WCFLibrary")]
+    [System.SerializableAttribute()]
+    public partial class OfficeProductsRepresent : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.WCFService.OfficeRepresent OfficeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Cost {
+            get {
+                return this.CostField;
+            }
+            set {
+                if ((this.CostField.Equals(value) != true)) {
+                    this.CostField = value;
+                    this.RaisePropertyChanged("Cost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WindowsFormsApp1.WCFService.OfficeRepresent Office {
+            get {
+                return this.OfficeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OfficeField, value) != true)) {
+                    this.OfficeField = value;
+                    this.RaisePropertyChanged("Office");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
                 }
             }
         }
@@ -149,10 +245,10 @@ namespace WindowsFormsApp1.WCFService {
         System.Threading.Tasks.Task DisconnectAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOffice", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeResponse")]
-        WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation);
+        void FindProductsByOffice(int id, string orgName, string officeLocation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOffice", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeResponse")]
-        System.Threading.Tasks.Task<WindowsFormsApp1.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation);
+        System.Threading.Tasks.Task FindProductsByOfficeAsync(int id, string orgName, string officeLocation);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgs")]
         void FindOrgs(int id, string orgName, string orgType);
@@ -210,7 +306,7 @@ namespace WindowsFormsApp1.WCFService {
         string DeleteOfficeCallback(WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeCallbackResponse")]
-        WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation);
+        void FindProductsByOfficeCallback(WindowsFormsApp1.WCFService.OfficeRepresent office);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgsCallback")]
         void FindOrgsCallback(WindowsFormsApp1.WCFService.OfficeRepresent[] officeRepresents);
@@ -260,12 +356,12 @@ namespace WindowsFormsApp1.WCFService {
             return base.Channel.DisconnectAsync(id);
         }
         
-        public WindowsFormsApp1.WCFService.OfficeProductsRepresent[] FindProductsByOffice(string orgName, string officeLocation) {
-            return base.Channel.FindProductsByOffice(orgName, officeLocation);
+        public void FindProductsByOffice(int id, string orgName, string officeLocation) {
+            base.Channel.FindProductsByOffice(id, orgName, officeLocation);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.WCFService.OfficeProductsRepresent[]> FindProductsByOfficeAsync(string orgName, string officeLocation) {
-            return base.Channel.FindProductsByOfficeAsync(orgName, officeLocation);
+        public System.Threading.Tasks.Task FindProductsByOfficeAsync(int id, string orgName, string officeLocation) {
+            return base.Channel.FindProductsByOfficeAsync(id, orgName, officeLocation);
         }
         
         public void FindOrgs(int id, string orgName, string orgType) {

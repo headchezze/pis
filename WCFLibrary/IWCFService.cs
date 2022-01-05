@@ -19,7 +19,7 @@ namespace WCFLibrary
         void Disconnect(int id);
 
         [OperationContract]
-        ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation);
+        void FindProductsByOffice(int id, string orgName, string officeLocation);
 
         [OperationContract(IsOneWay = true)]
         void FindOrgs(int id, string orgName = "", string orgType = "");
@@ -58,7 +58,7 @@ namespace WCFLibrary
         [OperationContract]
         string DeleteOfficeCallback(OfficeRepresent officeRepresent);
         [OperationContract]
-        ICollection<OfficeProductsRepresent> FindProductsByOfficeCallback(string orgName, string officeLocation);
+        void FindProductsByOfficeCallback(OfficeRepresent office);
 
         [OperationContract(IsOneWay = true)]
         void FindOrgsCallback(List<OfficeRepresent> officeRepresents);

@@ -119,24 +119,29 @@ namespace Interface
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(2, 87);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(815, 397);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.HeaderText = "Название организации";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Адрес";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Тип";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -241,7 +246,7 @@ namespace Interface
             this.autorizButton.Name = "autorizButton";
             this.autorizButton.Size = new System.Drawing.Size(217, 30);
             this.autorizButton.TabIndex = 15;
-            this.autorizButton.Text = "Войти в систему";
+            this.autorizButton.Text = "Авторизация";
             this.autorizButton.UseVisualStyleBackColor = false;
             this.autorizButton.Click += new System.EventHandler(this.AutorizButton_Click);
             // 

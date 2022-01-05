@@ -20,12 +20,12 @@ namespace Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 mainWindow = new Form1();
-            Thread thread = new Thread(delegate () { Application.Run(mainWindow); });
+            InterfaceController interfaceController = new InterfaceController();
+            Thread thread = new Thread(delegate () { interfaceController.Start(); });
             myThreards.Add(thread);
             thread.Start();
 
-            Thread thread1 = new Thread(delegate () { new Session(mainWindow); });
+            Thread thread1 = new Thread(delegate () { new Session(interfaceController); });
             myThreards.Add(thread1);
             thread1.Start();
         }

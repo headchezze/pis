@@ -10,38 +10,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
-
+using WindowsFormsApp1;
 namespace Interface 
 {
     public partial class Form1 : Form
     {
-        private int ID;
         public delegate void FormHandler(int id, string orgName, string orgType);
-        public event FormHandler Notivfy;
-
-        public Dictionary<string,Form> forms = new Dictionary<string, Form>()
-        {
-            { "Autorization", new AutorizationSys() },
-            { "Office", new Sales() },
-            { "AddOffice",  new AdressAdd() }
-
-        };
+        public event FormHandler FindOfficesEvent;
+        public event FormHandler FindProductsEvent;
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        public void GetID(int id)
-        {
-            ID = id;
-        }
 
         public async void UpdateOrgList(List<List<string>> offices)
         {
             for (int i = 0; i < offices.Count; i++)
             {
-                dataGridView1.Rows.Add(offices[i][0], offices[i][1], "test");
+                dataGridView1.Rows.Add(offices[i][1], offices[i][0], offices[i][2]);
             }
         }
 
@@ -76,7 +64,7 @@ namespace Interface
 
         private void AutorizButton_Click(object sender, EventArgs e)
         {
-            forms["Autorization"].Show();
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -120,7 +108,13 @@ namespace Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Notivfy?.Invoke(ID, "", "");
+            FindOfficesEvent?.Invoke(InterfaceController.ID, "Дружок", "");
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int cellCount = dataGridView1.Rows[e.RowIndex].Cells.Count;
+            FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
         }
     }
 }

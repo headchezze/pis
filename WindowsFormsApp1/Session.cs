@@ -14,17 +14,18 @@ namespace WindowsFormsApp1
     {
         private WCFServiceClient client;
         private int ID;
-        private Form1 MainForm;
+        private InterfaceController InterfaceController;
 
-        public Session(Form1 form)
+        public Session(InterfaceController interfaceController)
         {
             client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
             ID = client.Connect();
-            MainForm = form;
+            InterfaceController = interfaceController;
 
 
-            MainForm.GetID(ID);
-            MainForm.Notivfy += client.FindOrgs;
+            InterfaceController.GetID(ID);
+            InterfaceController.Main.FindOfficesEvent += client.FindOrgs;
+            InterfaceController.Main.FindProductsEvent += client.FindProductsByOffice;
 
         }
 
@@ -61,10 +62,10 @@ namespace WindowsFormsApp1
                 List<List<string>> values = new List<List<string>>();
                 foreach (var officeRepresent in officeRepresents)
                 {
-                    values.Add(new List<string>() { officeRepresent.Organization, officeRepresent.Location });
+                    values.Add(new List<string>() { officeRepresent.Organization, officeRepresent.Location, officeRepresent.OrgType });
                 }
 
-                MainForm.Invoke((Action<List<List<string>>>)MainForm.UpdateOrgList, values);
+                InterfaceController.Main.Invoke((Action<List<List<string>>>)InterfaceController.Main.UpdateOrgList, values);
             }
             else
             {
@@ -72,9 +73,23 @@ namespace WindowsFormsApp1
             }
         }
 
-        public OfficeProductsRepresent[] FindProductsByOfficeCallback(string orgName, string officeLocation)
+        public void FindProductsByOfficeCallback(OfficeRepresent office)
         {
-            throw new NotImplementedException();
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                List<List<string>> products = new List<List<string>>();
+                foreach (var product in office.ProductsRepresents)
+                {
+                    products.Add(new List<string>() { product.Product, product.Cost.ToString(), product.Count.ToString() });
+                }
+
+
+                InterfaceController.CreateSalesForm(office.Organization, office.Location, products);
+            }
+            else
+            {
+                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ namespace WCFLibrary
     public class WCFService : IWCFService
     {
         List<ServerUser> users = new List<ServerUser>();
+        pisanimalsEntities context = new pisanimalsEntities();
 
         static int nextID = 1;
 
@@ -65,14 +66,14 @@ namespace WCFLibrary
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
             {
-                var context = new pisanimalsEntities();
-                var orgs = context.Orgs.ToList();
+
+                var offices = context.Offices.Where(i => i.Orgs.OrgName == orgName);
                 List<OfficeRepresent> list = new List<OfficeRepresent>();
 
-                foreach (Orgs org in orgs)
+                foreach (Offices office in offices)
                 {
-                    Console.WriteLine(org.OrgName + " " + org.Type + "\n");
-                    list.Add(new OfficeRepresent(org.OrgName, org.Type));
+                    Console.WriteLine(office.OrgName + " " + office.Adress + office.Orgs.Type + "\n");
+                    list.Add(new OfficeRepresent(office.OrgName, office.Adress, office.Orgs.Type));
                 }
 
                 user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsCallback(list);
@@ -80,9 +81,22 @@ namespace WCFLibrary
             }
         }
 
-        public ICollection<OfficeProductsRepresent> FindProductsByOffice(string orgName, string officeLocation)
+        public void FindProductsByOffice(int id, string orgName, string officeLocation)
         {
-            throw new NotImplementedException();
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                var products = context.OfficeProducts.Where(i => i.Offices.Adress == officeLocation && i.Offices.OrgName == orgName);
+                List<OfficeProductsRepresent> officeProducts = new List<OfficeProductsRepresent>();
+                foreach (OfficeProducts product in products)
+                {
+                    officeProducts.Add(new OfficeProductsRepresent(product.Product, product.Cost, product.CountProduct));
+                }
+
+                OfficeRepresent office = new OfficeRepresent(officeLocation, orgName, officeProducts);
+
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindProductsByOfficeCallback(office);
+            }
         }
     }
 }
