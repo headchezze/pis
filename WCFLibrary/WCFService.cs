@@ -66,8 +66,9 @@ namespace WCFLibrary
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
             {
-
-                var offices = context.Offices.Where(i => i.Orgs.OrgName == orgName);
+                IQueryable<Offices> offices = null;
+                offices = orgName != "" ? context.Offices.Where(i => i.Orgs.OrgName == orgName) : offices;
+                offices = orgType != "" ? context.Offices.Where(i => i.Orgs.Type == orgType) : offices;
                 List<OfficeRepresent> list = new List<OfficeRepresent>();
 
                 foreach (Offices office in offices)
@@ -98,5 +99,26 @@ namespace WCFLibrary
                 user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindProductsByOfficeCallback(office);
             }
         }
+
+        public void GetOrgsAndTypes(int id)
+        {
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                List<string> orgs = new List<string>();
+                foreach (Orgs org in context.Orgs.ToList())
+                {
+                    orgs.Add(org.OrgName);
+                }
+
+                List<string> types = new List<string>();
+                foreach (OrgTypes org in context.OrgTypes.ToList())
+                {
+                    types.Add(org.TypeName);
+                }
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().GetOrgsAndTypesCallback(orgs, types);
+            }
+        }
+
     }
 }

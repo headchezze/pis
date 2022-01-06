@@ -285,6 +285,12 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteOfficeResponse")]
         System.Threading.Tasks.Task DeleteOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypes")]
+        void GetOrgsAndTypes(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypes")]
+        System.Threading.Tasks.Task GetOrgsAndTypesAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -310,6 +316,9 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/FindOrgsCallback")]
         void FindOrgsCallback(WindowsFormsApp1.WCFService.OfficeRepresent[] officeRepresents);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypesCallback")]
+        void GetOrgsAndTypesCallback(string[] org, string[] types);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -410,6 +419,14 @@ namespace WindowsFormsApp1.WCFService {
         
         public System.Threading.Tasks.Task DeleteOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeRepresent officeRepresent) {
             return base.Channel.DeleteOfficeAsync(id, officeRepresent);
+        }
+        
+        public void GetOrgsAndTypes(int id) {
+            base.Channel.GetOrgsAndTypes(id);
+        }
+        
+        public System.Threading.Tasks.Task GetOrgsAndTypesAsync(int id) {
+            return base.Channel.GetOrgsAndTypesAsync(id);
         }
     }
 }

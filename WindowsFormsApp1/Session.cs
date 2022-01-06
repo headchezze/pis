@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
             InterfaceController.GetID(ID);
             InterfaceController.Main.FindOfficesEvent += client.FindOrgs;
             InterfaceController.Main.FindProductsEvent += client.FindProductsByOffice;
+            InterfaceController.Main.UpdateComboEvent += client.GetOrgsAndTypes;
 
         }
 
@@ -54,7 +55,7 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        public async void FindOrgsCallback(OfficeRepresent[] officeRepresents)
+        public void FindOrgsCallback(OfficeRepresent[] officeRepresents)
         {
 
             if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
@@ -85,6 +86,18 @@ namespace WindowsFormsApp1
 
 
                 InterfaceController.CreateSalesForm(office.Organization, office.Location, products);
+            }
+            else
+            {
+                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
+            }
+        }
+
+        public void GetOrgsAndTypesCallback(string[] org, string[] types)
+        {
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                InterfaceController.Main.Invoke((Action<string[], string[]>)InterfaceController.Main.UpdateOrgAndTypesCombo, org, types);
             }
             else
             {

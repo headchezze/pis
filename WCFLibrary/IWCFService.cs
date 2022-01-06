@@ -38,6 +38,8 @@ namespace WCFLibrary
 
         [OperationContract]
         void DeleteOffice(int id, OfficeRepresent officeRepresent);
+        [OperationContract(IsOneWay = true)]
+        void GetOrgsAndTypes(int id);
 
     }
 
@@ -62,5 +64,8 @@ namespace WCFLibrary
 
         [OperationContract(IsOneWay = true)]
         void FindOrgsCallback(List<OfficeRepresent> officeRepresents);
+
+        [OperationContract(IsOneWay = true)]
+        void GetOrgsAndTypesCallback(List<string> org, List<string> types);
     }
 }

@@ -57,11 +57,6 @@ namespace Interface
             this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.comboBox1.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Котопес",
-            "Рога и Копыта",
-            "Дружок",
-            "Простоквашино"});
             this.comboBox1.Location = new System.Drawing.Point(15, 41);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(260, 24);
@@ -222,10 +217,6 @@ namespace Interface
             this.comboBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.comboBox2.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Приют",
-            "Ветклиника",
-            "Ветслужба"});
             this.comboBox2.Location = new System.Drawing.Point(315, 41);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(260, 24);
@@ -304,6 +295,7 @@ namespace Interface
             this.Text = "Реестр организаций";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -11,13 +11,16 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using WindowsFormsApp1;
+using System.Threading;
 namespace Interface 
 {
     public partial class Form1 : Form
     {
         public delegate void FormHandler(int id, string orgName, string orgType);
+        public delegate void ComboHadler(int id);
         public event FormHandler FindOfficesEvent;
         public event FormHandler FindProductsEvent;
+        public event ComboHadler UpdateComboEvent;
 
         public Form1()
         {
@@ -35,7 +38,7 @@ namespace Interface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,9 +65,9 @@ namespace Interface
             itemAdd.Show();
         }
 
-        private void AutorizButton_Click(object sender, EventArgs e)
+        private async void AutorizButton_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -147,6 +150,18 @@ namespace Interface
                 button4.Visible = false;
                 button5.Visible = false;
             }
+        }
+
+        public void UpdateOrgAndTypesCombo(string[] orgs, string[] types)
+        {
+            comboBox1.Items.AddRange(orgs);
+            comboBox2.Items.AddRange(types);
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            Thread.Sleep(2000);
+            UpdateComboEvent?.Invoke(InterfaceController.ID);
         }
     }
 }
