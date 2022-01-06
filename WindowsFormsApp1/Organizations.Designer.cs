@@ -45,8 +45,10 @@ namespace Interface
             this.exportXLSX = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.autorizButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@ namespace Interface
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Котопес",
-            "Рога и копыта",
+            "Рога и Копыта",
             "Дружок",
             "Простоквашино"});
             this.comboBox1.Location = new System.Drawing.Point(15, 41);
@@ -83,9 +85,9 @@ namespace Interface
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Georgia", 12F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(600, 23);
+            this.button1.Location = new System.Drawing.Point(600, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 45);
+            this.button1.Size = new System.Drawing.Size(208, 37);
             this.button1.TabIndex = 4;
             this.button1.Text = "Поиск";
             this.button1.UseVisualStyleBackColor = false;
@@ -98,7 +100,7 @@ namespace Interface
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Georgia", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Georgia", 9.75F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -111,7 +113,7 @@ namespace Interface
             this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Georgia", 10.25F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Georgia", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -151,12 +153,13 @@ namespace Interface
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(16, 548);
+            this.button3.Location = new System.Drawing.Point(40, 571);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(191, 39);
+            this.button3.Size = new System.Drawing.Size(187, 39);
             this.button3.TabIndex = 7;
-            this.button3.Text = "Добавить адрес";
+            this.button3.Text = "Добавить новый филиал";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -165,12 +168,13 @@ namespace Interface
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(230, 548);
+            this.button4.Location = new System.Drawing.Point(266, 571);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(192, 39);
+            this.button4.Size = new System.Drawing.Size(207, 39);
             this.button4.TabIndex = 8;
-            this.button4.Text = "Редактировать адрес";
+            this.button4.Text = "Редактировать филиал";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
@@ -179,12 +183,13 @@ namespace Interface
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(451, 548);
+            this.button5.Location = new System.Drawing.Point(513, 571);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(192, 39);
+            this.button5.Size = new System.Drawing.Size(251, 39);
             this.button5.TabIndex = 9;
-            this.button5.Text = "Удалить адрес";
+            this.button5.Text = "Удалить филиал";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
             // 
             // exportXLSX
             // 
@@ -192,9 +197,9 @@ namespace Interface
             this.exportXLSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exportXLSX.Font = new System.Drawing.Font("Georgia", 10F);
             this.exportXLSX.ForeColor = System.Drawing.Color.White;
-            this.exportXLSX.Location = new System.Drawing.Point(544, 488);
+            this.exportXLSX.Location = new System.Drawing.Point(600, 51);
             this.exportXLSX.Name = "exportXLSX";
-            this.exportXLSX.Size = new System.Drawing.Size(273, 30);
+            this.exportXLSX.Size = new System.Drawing.Size(208, 30);
             this.exportXLSX.TabIndex = 11;
             this.exportXLSX.Text = "Экспорт в Excel";
             this.exportXLSX.UseVisualStyleBackColor = false;
@@ -226,38 +231,61 @@ namespace Interface
             this.comboBox2.Size = new System.Drawing.Size(260, 24);
             this.comboBox2.TabIndex = 12;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans Typewriter", 13.25F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(12, 524);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 21);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Меню оператора";
-            // 
             // autorizButton
             // 
             this.autorizButton.BackColor = System.Drawing.Color.SlateBlue;
             this.autorizButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.autorizButton.Font = new System.Drawing.Font("Georgia", 10F);
             this.autorizButton.ForeColor = System.Drawing.Color.White;
-            this.autorizButton.Location = new System.Drawing.Point(2, 488);
+            this.autorizButton.Location = new System.Drawing.Point(652, 489);
             this.autorizButton.Name = "autorizButton";
-            this.autorizButton.Size = new System.Drawing.Size(217, 30);
+            this.autorizButton.Size = new System.Drawing.Size(165, 30);
             this.autorizButton.TabIndex = 15;
             this.autorizButton.Text = "Авторизация";
             this.autorizButton.UseVisualStyleBackColor = false;
             this.autorizButton.Click += new System.EventHandler(this.AutorizButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(280, 492);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(246, 28);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Войти";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Lucida Sans Typewriter", 13.5F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(11, 536);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(272, 21);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Меню оператора организации: ";
+            this.label3.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 14.25F);
+            this.label4.Location = new System.Drawing.Point(14, 494);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(166, 25);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Улица Ленина 67";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(820, 599);
-            this.Controls.Add(this.autorizButton);
+            this.ClientSize = new System.Drawing.Size(820, 531);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.autorizButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.exportXLSX);
@@ -269,8 +297,8 @@ namespace Interface
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(836, 638);
-            this.MinimumSize = new System.Drawing.Size(836, 638);
+            this.MaximumSize = new System.Drawing.Size(836, 662);
+            this.MinimumSize = new System.Drawing.Size(836, 570);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Реестр организаций";
@@ -294,11 +322,13 @@ namespace Interface
         private System.Windows.Forms.Button exportXLSX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button autorizButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

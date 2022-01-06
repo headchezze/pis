@@ -108,13 +108,45 @@ namespace Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FindOfficesEvent?.Invoke(InterfaceController.ID, "Дружок", "");
+            dataGridView1.Rows.Clear();
+            var organizName = comboBox1.Text;
+            var organizType = comboBox2.Text;
+            organizName = organizName.Replace("ё", "е"); // Это решение проблемы с расхождением букв
+            organizName = organizName.Replace("Ё", "Е");
+            FindOfficesEvent?.Invoke(InterfaceController.ID, organizName, organizType);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dataGridView1.Rows[e.RowIndex].Selected = true; // Выделение всей строки
             int cellCount = dataGridView1.Rows[e.RowIndex].Cells.Count;
             FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (button2.Text == "Войти")
+            {
+                button2.Text = "Выйти";
+                MessageBox.Show("Вы успешно вошли в систему");
+                this.Width = 835;
+                this.Height = 662;
+                label3.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+            }
+            else
+            {
+                button2.Text = "Войти";
+                MessageBox.Show("Вы успешно вышли в систему");
+                this.Width = 836;
+                this.Height = 577;
+                label3.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                button5.Visible = false;
+            }
         }
     }
 }
