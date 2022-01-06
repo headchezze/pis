@@ -291,6 +291,12 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypes")]
         System.Threading.Tasks.Task GetOrgsAndTypesAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/Login")]
+        void Login(int id, [System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/Login")]
+        System.Threading.Tasks.Task LoginAsync(int id, string login, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -319,6 +325,9 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypesCallback")]
         void GetOrgsAndTypesCallback(string[] org, string[] types);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/LoginCallback")]
+        void LoginCallback(string fullname, string org);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -427,6 +436,14 @@ namespace WindowsFormsApp1.WCFService {
         
         public System.Threading.Tasks.Task GetOrgsAndTypesAsync(int id) {
             return base.Channel.GetOrgsAndTypesAsync(id);
+        }
+        
+        public void Login(int id, string login1, string password) {
+            base.Channel.Login(id, login1, password);
+        }
+        
+        public System.Threading.Tasks.Task LoginAsync(int id, string login, string password) {
+            return base.Channel.LoginAsync(id, login, password);
         }
     }
 }

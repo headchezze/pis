@@ -18,6 +18,8 @@ namespace Interface
     {
         public delegate void FormHandler(int id, string orgName, string orgType);
         public delegate void ComboHadler(int id);
+        public delegate void LoginHandler();
+        public event LoginHandler LoginEvent;
         public event FormHandler FindOfficesEvent;
         public event FormHandler FindProductsEvent;
         public event ComboHadler UpdateComboEvent;
@@ -67,12 +69,12 @@ namespace Interface
 
         private async void AutorizButton_Click(object sender, EventArgs e)
         {
-
+            LoginEvent?.Invoke();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ExportXLSX_Click(object sender, EventArgs e)
@@ -162,6 +164,18 @@ namespace Interface
         {
             Thread.Sleep(2000);
             UpdateComboEvent?.Invoke(InterfaceController.ID);
+        }
+
+        public void LogedIn(string text)
+        {
+            label4.Text = text;
+            autorizButton.Text = "Выйти";
+            this.Width = 835;
+            this.Height = 662;
+            label3.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
         }
     }
 }

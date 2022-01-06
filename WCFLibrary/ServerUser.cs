@@ -19,5 +19,10 @@ namespace WCFLibrary
             this.ID = ID;
             this.operationContext = operationContext;
         }
+
+        public void Login(WorkerPresent workerPresent)
+        {
+            Worker = workerPresent;
+        }
     }
 }

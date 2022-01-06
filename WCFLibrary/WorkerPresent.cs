@@ -12,5 +12,13 @@ namespace WCFLibrary
         public string Password { get; private set; }
         public string Organization { get; private set; }
         public string Fullname { get; private set; }
+
+        public WorkerPresent(string fullname, string org, string login, string password)
+        {
+            Fullname = fullname;
+            Organization = org;
+            Login = login;
+            Password = password;
+        }
     }
 }

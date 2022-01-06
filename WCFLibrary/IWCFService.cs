@@ -40,6 +40,8 @@ namespace WCFLibrary
         void DeleteOffice(int id, OfficeRepresent officeRepresent);
         [OperationContract(IsOneWay = true)]
         void GetOrgsAndTypes(int id);
+        [OperationContract(IsOneWay = true)]
+        void Login(int id, string login, string password);
 
     }
 
@@ -67,5 +69,8 @@ namespace WCFLibrary
 
         [OperationContract(IsOneWay = true)]
         void GetOrgsAndTypesCallback(List<string> org, List<string> types);
+        [OperationContract(IsOneWay = true)]
+        void LoginCallback(string fullname, string org);
+
     }
 }

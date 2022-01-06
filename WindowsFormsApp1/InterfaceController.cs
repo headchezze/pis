@@ -19,6 +19,8 @@ namespace WindowsFormsApp1
         public InterfaceController()
         {
             Main = new Form1();
+            AutorizationSys = new AutorizationSys();
+            Main.LoginEvent += CreateLoginForm;
         }
 
         public void GetID(int id)
@@ -37,6 +39,12 @@ namespace WindowsFormsApp1
             Thread thread = new Thread(delegate () { Sales.ShowDialog(); });
             thread.Start();
             Sales.UpdateProdList(org, location, products);
+        }
+
+        public void CreateLoginForm()
+        {
+            Thread thread = new Thread(delegate () { AutorizationSys.ShowDialog(); });
+            thread.Start();
         }
     }
 }

@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace Interface
 {
     public partial class AutorizationSys : Form
     {
+        public delegate void LoginHandler(int id, string login, string password);
+        public event LoginHandler LoginEvent;
         public AutorizationSys()
         {
             InitializeComponent();
@@ -20,6 +23,16 @@ namespace Interface
         private void CloseAutorizBut_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoginEvent?.Invoke(InterfaceController.ID, textBox1.Text, textBox2.Text);
+        }
+
+        public void ShowErrorMessage()
+        {
+            MessageBox.Show("Не найден логин или пароль!");
         }
     }
 }

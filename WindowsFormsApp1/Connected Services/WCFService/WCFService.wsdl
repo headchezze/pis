@@ -91,6 +91,9 @@
   <wsdl:message name="IWCFService_GetOrgsAndTypes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOrgsAndTypes" />
   </wsdl:message>
+  <wsdl:message name="IWCFService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
   <wsdl:message name="IWCFService_CreateNewOfficeCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:CreateNewOfficeCallback" />
   </wsdl:message>
@@ -133,6 +136,9 @@
   <wsdl:message name="IWCFService_GetOrgsAndTypesCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetOrgsAndTypesCallback" />
   </wsdl:message>
+  <wsdl:message name="IWCFService_LoginCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:LoginCallback" />
+  </wsdl:message>
   <wsdl:portType name="IWCFService">
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Connect" message="tns:IWCFService_Connect_InputMessage" />
@@ -172,6 +178,9 @@
     <wsdl:operation name="GetOrgsAndTypes">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetOrgsAndTypes" message="tns:IWCFService_GetOrgsAndTypes_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Login" message="tns:IWCFService_Login_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateNewOfficeCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/CreateNewOfficeCallback" message="tns:IWCFService_CreateNewOfficeCallback_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/CreateNewOfficeCallbackResponse" message="tns:IWCFService_CreateNewOfficeCallback_InputCallbackMessage" />
@@ -201,6 +210,9 @@
     </wsdl:operation>
     <wsdl:operation name="GetOrgsAndTypesCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetOrgsAndTypesCallback" message="tns:IWCFService_GetOrgsAndTypesCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/LoginCallback" message="tns:IWCFService_LoginCallback_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IWCFService" type="tns:IWCFService">
@@ -290,6 +302,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="CreateNewOfficeCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/CreateNewOfficeCallback" style="document" />
       <wsdl:input>
@@ -352,6 +370,12 @@
     </wsdl:operation>
     <wsdl:operation name="GetOrgsAndTypesCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/GetOrgsAndTypesCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/LoginCallback" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

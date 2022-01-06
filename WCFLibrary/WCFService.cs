@@ -120,5 +120,23 @@ namespace WCFLibrary
             }
         }
 
+        public void Login(int id, string login, string password)
+        {
+            Console.WriteLine("hi");
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                IQueryable<Workers> workers = context.Workers.Where(i => i.Login == login && i.Password == password);
+
+                if(workers.Count() > 0)
+                {
+                    user.Login(new WorkerPresent(workers.First().FullName, workers.First().Org, workers.First().Login, workers.First().Password));
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(user.Worker.Fullname, user.Worker.Organization);
+                    return;
+                }
+
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(String.Empty, String.Empty);
+            }
+        }
     }
 }

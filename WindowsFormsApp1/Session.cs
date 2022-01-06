@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         private WCFServiceClient client;
         private int ID;
+        private string Fullname, Org;
         private InterfaceController InterfaceController;
 
         public Session(InterfaceController interfaceController)
@@ -27,6 +28,7 @@ namespace WindowsFormsApp1
             InterfaceController.Main.FindOfficesEvent += client.FindOrgs;
             InterfaceController.Main.FindProductsEvent += client.FindProductsByOffice;
             InterfaceController.Main.UpdateComboEvent += client.GetOrgsAndTypes;
+            InterfaceController.AutorizationSys.LoginEvent += client.Login;
 
         }
 
@@ -103,6 +105,20 @@ namespace WindowsFormsApp1
             {
                 client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
             }
+        }
+
+        public void LoginCallback(string fullname, string org)
+        {
+            if (fullname == String.Empty || org == String.Empty)
+            {
+                InterfaceController.AutorizationSys.Invoke((Action)InterfaceController.AutorizationSys.ShowErrorMessage);
+                return;
+            }
+
+            Fullname = fullname;
+            Org = org;
+            InterfaceController.Main.Invoke((Action<string>)InterfaceController.Main.LogedIn, fullname);
+            InterfaceController.AutorizationSys.Invoke((Action)InterfaceController.AutorizationSys.Close);
         }
     }
 }
