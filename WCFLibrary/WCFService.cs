@@ -12,6 +12,7 @@ namespace WCFLibrary
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class WCFService : IWCFService
     {
+        delegate void FindOfficesDelegate(List<OfficeRepresent> offices);
         List<ServerUser> users = new List<ServerUser>();
         pisanimalsEntities context = new pisanimalsEntities();
 
@@ -30,11 +31,6 @@ namespace WCFLibrary
             nextID++;
 
             return user.ID;
-        }
-
-        public void CreateNewOffice(int id, OfficeRepresent officeRepresent, OfficeRepresent to = null)
-        {
-            throw new NotImplementedException();
         }
 
         public void CreateNewProduct(int id, ProductRepresent productRepresent)
@@ -61,11 +57,17 @@ namespace WCFLibrary
             }
         }
 
-        public void FindOrgs(int id, string orgName = "", string orgType = "")
+        public void FindOrgs(int id, FindOfficeFlag flag, string orgName = "", string orgType = "")
         {
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
             {
+                Dictionary<FindOfficeFlag,FindOfficesDelegate> methods = new Dictionary<FindOfficeFlag, FindOfficesDelegate>()
+                {
+                    { FindOfficeFlag.Main, user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsToMainCallback },
+                    { FindOfficeFlag.AddressAdd, user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsToAddressAddCallback }
+                };
+
                 IQueryable<Offices> offices = null;
                 offices = orgName != "" ? context.Offices.Where(i => i.Orgs.OrgName == orgName) : offices;
                 offices = orgType != "" ? context.Offices.Where(i => i.Orgs.Type == orgType) : offices;
@@ -74,10 +76,10 @@ namespace WCFLibrary
                 foreach (Offices office in offices)
                 {
                     Console.WriteLine(office.OrgName + " " + office.Adress + office.Orgs.Type + "\n");
-                    list.Add(new OfficeRepresent(office.OrgName, office.Adress, office.Orgs.Type));
+                    list.Add(new OfficeRepresent(office.Adress, office.OrgName, office.Orgs.Type));
                 }
 
-                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsCallback(list);
+                methods[flag]?.Invoke(list);
 
             }
         }
@@ -122,7 +124,6 @@ namespace WCFLibrary
 
         public void Login(int id, string login, string password)
         {
-            Console.WriteLine("hi");
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
             {
@@ -136,6 +137,24 @@ namespace WCFLibrary
                 }
 
                     user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(String.Empty, String.Empty);
+            }
+        }
+
+        public void AddNewOffice(int id, string org, string address)
+        {
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                Offices office = new Offices()
+                {
+                    OrgName = org,
+                    Adress = address
+                };
+
+                context.Offices.Add(office);
+                context.SaveChanges();
+
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddNewOfficeCallback(true);
             }
         }
     }

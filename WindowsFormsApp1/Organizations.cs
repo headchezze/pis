@@ -12,16 +12,20 @@ using System.Data.SqlClient;
 using System.Data.Sql;
 using WindowsFormsApp1;
 using System.Threading;
+
 namespace Interface 
 {
     public partial class Form1 : Form
     {
-        public delegate void FormHandler(int id, string orgName, string orgType);
+        public delegate void FormHandler(int id, WindowsFormsApp1.WCFService.FindOfficeFlag flag,  string orgName, string orgType);
+        public delegate void FindProductsHandler(int id, string orgName, string typeName);
         public delegate void ComboHadler(int id);
         public delegate void LoginHandler();
+        public delegate void AddressAddHandler(int id, WindowsFormsApp1.WCFService.FindOfficeFlag flag, string orgName, string orgType);
+        public event AddressAddHandler AddressAddEvent;
         public event LoginHandler LoginEvent;
         public event FormHandler FindOfficesEvent;
-        public event FormHandler FindProductsEvent;
+        public event FindProductsHandler FindProductsEvent;
         public event ComboHadler UpdateComboEvent;
 
         public Form1()
@@ -34,7 +38,7 @@ namespace Interface
         {
             for (int i = 0; i < offices.Count; i++)
             {
-                dataGridView1.Rows.Add(offices[i][1], offices[i][0], offices[i][2]);
+                dataGridView1.Rows.Add(offices[i][0], offices[i][1], offices[i][2]);
             }
         }
 
@@ -57,8 +61,8 @@ namespace Interface
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AdressAdd adressAdd = new AdressAdd();
-            adressAdd.ShowDialog();
+            Thread.Sleep(4000);
+            AddressAddEvent?.Invoke(InterfaceController.ID, WindowsFormsApp1.WCFService.FindOfficeFlag.AddressAdd, InterfaceController.Organization, "");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -118,7 +122,7 @@ namespace Interface
             var organizType = comboBox2.Text;
             organizName = organizName.Replace("ё", "е"); // Это решение проблемы с расхождением букв
             organizName = organizName.Replace("Ё", "Е");
-            FindOfficesEvent?.Invoke(InterfaceController.ID, organizName, organizType);
+            FindOfficesEvent?.Invoke(InterfaceController.ID, WindowsFormsApp1.WCFService.FindOfficeFlag.Main, organizName, organizType);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -162,14 +166,15 @@ namespace Interface
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             UpdateComboEvent?.Invoke(InterfaceController.ID);
         }
 
-        public void LogedIn(string text)
+        public void LogedIn(string fullname, string org)
         {
-            label4.Text = text;
-            autorizButton.Text = "Выйти";
+            label4.Text = fullname + Environment.NewLine + org;
+            InterfaceController.Organization = org;
+            autorizButton.Visible = false;
             this.Width = 835;
             this.Height = 662;
             label3.Visible = true;

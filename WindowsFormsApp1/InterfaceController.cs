@@ -12,14 +12,17 @@ namespace WindowsFormsApp1
     class InterfaceController
     {
         static public int ID { get; private set; }
+        static public string Organization { get; set; }
         public Form1 Main { get; private set; }
         public Sales Sales { get; private set; }
         public AutorizationSys AutorizationSys { get; private set; }
+        public AdressAdd AdressAdd { get; private set; }
 
         public InterfaceController()
         {
             Main = new Form1();
             AutorizationSys = new AutorizationSys();
+            AdressAdd = new AdressAdd();
             Main.LoginEvent += CreateLoginForm;
         }
 
@@ -44,6 +47,14 @@ namespace WindowsFormsApp1
         public void CreateLoginForm()
         {
             Thread thread = new Thread(delegate () { AutorizationSys.ShowDialog(); });
+            thread.Start();
+        }
+
+        public void CreateAddressAddForm(string[] locations)
+        {
+            AdressAdd = new AdressAdd();
+            AdressAdd.UpdateCombos(locations);
+            Thread thread = new Thread(delegate () { AdressAdd.ShowDialog(); });
             thread.Start();
         }
     }

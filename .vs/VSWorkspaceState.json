@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\ServerSide",
-    "\\WCFLibrary"
+    "\\WCFLibrary",
+    "\\WindowsFormsApp1"
   ],
-  "SelectedNode": "\\ServerSide\\Program.cs",
+  "SelectedNode": "\\WindowsFormsApp1\\AutorizationSys.cs",
   "PreviewInSolutionExplorer": false
 }

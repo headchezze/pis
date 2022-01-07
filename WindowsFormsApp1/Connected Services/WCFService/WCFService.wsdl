@@ -58,12 +58,6 @@
   <wsdl:message name="IWCFService_FindOrgs_InputMessage">
     <wsdl:part name="parameters" element="tns:FindOrgs" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_CreateNewOffice_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewOffice" />
-  </wsdl:message>
-  <wsdl:message name="IWCFService_CreateNewOffice_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewOfficeResponse" />
-  </wsdl:message>
   <wsdl:message name="IWCFService_AddProductToOffice_InputMessage">
     <wsdl:part name="parameters" element="tns:AddProductToOffice" />
   </wsdl:message>
@@ -94,11 +88,8 @@
   <wsdl:message name="IWCFService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_CreateNewOfficeCallback_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewOfficeCallback" />
-  </wsdl:message>
-  <wsdl:message name="IWCFService_CreateNewOfficeCallback_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewOfficeCallbackResponse" />
+  <wsdl:message name="IWCFService_AddNewOffice_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewOffice" />
   </wsdl:message>
   <wsdl:message name="IWCFService_AddProductToOfficeCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AddProductToOfficeCallback" />
@@ -130,14 +121,20 @@
   <wsdl:message name="IWCFService_FindProductsByOfficeCallback_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:FindProductsByOfficeCallbackResponse" />
   </wsdl:message>
-  <wsdl:message name="IWCFService_FindOrgsCallback_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:FindOrgsCallback" />
+  <wsdl:message name="IWCFService_FindOrgsToMainCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:FindOrgsToMainCallback" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_FindOrgsToAddressAddCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:FindOrgsToAddressAddCallback" />
   </wsdl:message>
   <wsdl:message name="IWCFService_GetOrgsAndTypesCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetOrgsAndTypesCallback" />
   </wsdl:message>
   <wsdl:message name="IWCFService_LoginCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:LoginCallback" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_AddNewOfficeCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AddNewOfficeCallback" />
   </wsdl:message>
   <wsdl:portType name="IWCFService">
     <wsdl:operation name="Connect">
@@ -154,10 +151,6 @@
     </wsdl:operation>
     <wsdl:operation name="FindOrgs">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/FindOrgs" message="tns:IWCFService_FindOrgs_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateNewOffice">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/CreateNewOffice" message="tns:IWCFService_CreateNewOffice_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/CreateNewOfficeResponse" message="tns:IWCFService_CreateNewOffice_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddProductToOffice">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddProductToOffice" message="tns:IWCFService_AddProductToOffice_InputMessage" />
@@ -181,9 +174,8 @@
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Login" message="tns:IWCFService_Login_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CreateNewOfficeCallback">
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/CreateNewOfficeCallback" message="tns:IWCFService_CreateNewOfficeCallback_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/CreateNewOfficeCallbackResponse" message="tns:IWCFService_CreateNewOfficeCallback_InputCallbackMessage" />
+    <wsdl:operation name="AddNewOffice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddNewOffice" message="tns:IWCFService_AddNewOffice_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddProductToOfficeCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddProductToOfficeCallback" message="tns:IWCFService_AddProductToOfficeCallback_OutputCallbackMessage" />
@@ -205,14 +197,20 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallback" message="tns:IWCFService_FindProductsByOfficeCallback_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallbackResponse" message="tns:IWCFService_FindProductsByOfficeCallback_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="FindOrgsCallback">
-      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindOrgsCallback" message="tns:IWCFService_FindOrgsCallback_OutputCallbackMessage" />
+    <wsdl:operation name="FindOrgsToMainCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindOrgsToMainCallback" message="tns:IWCFService_FindOrgsToMainCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOrgsToAddressAddCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/FindOrgsToAddressAddCallback" message="tns:IWCFService_FindOrgsToAddressAddCallback_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOrgsAndTypesCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetOrgsAndTypesCallback" message="tns:IWCFService_GetOrgsAndTypesCallback_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="LoginCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/LoginCallback" message="tns:IWCFService_LoginCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOfficeCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddNewOfficeCallback" message="tns:IWCFService_AddNewOfficeCallback_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IWCFService" type="tns:IWCFService">
@@ -250,15 +248,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="CreateNewOffice">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/CreateNewOffice" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddProductToOffice">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/AddProductToOffice" style="document" />
@@ -308,14 +297,11 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="CreateNewOfficeCallback">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/CreateNewOfficeCallback" style="document" />
+    <wsdl:operation name="AddNewOffice">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddNewOffice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddProductToOfficeCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/AddProductToOfficeCallback" style="document" />
@@ -362,8 +348,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FindOrgsCallback">
-      <soap12:operation soapAction="http://tempuri.org/IWCFService/FindOrgsCallback" style="document" />
+    <wsdl:operation name="FindOrgsToMainCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/FindOrgsToMainCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOrgsToAddressAddCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/FindOrgsToAddressAddCallback" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -376,6 +368,12 @@
     </wsdl:operation>
     <wsdl:operation name="LoginCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/LoginCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewOfficeCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddNewOfficeCallback" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

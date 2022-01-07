@@ -29,15 +29,17 @@ namespace WindowsFormsApp1
             InterfaceController.Main.FindProductsEvent += client.FindProductsByOffice;
             InterfaceController.Main.UpdateComboEvent += client.GetOrgsAndTypes;
             InterfaceController.AutorizationSys.LoginEvent += client.Login;
+            InterfaceController.Main.AddressAddEvent += client.FindOrgs;
 
+        }
+
+        public void AddNewOfficeCallback(bool isCreated)
+        {
+            if (isCreated)
+                InterfaceController.AdressAdd.Invoke((Action)InterfaceController.AdressAdd.ShowAddressMessage);
         }
 
         public string AddProductToOfficeCallback(OfficeProductsRepresent[] officeProductsRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string CreateNewOfficeCallback(OfficeRepresent officeRepresent, OfficeRepresent to)
         {
             throw new NotImplementedException();
         }
@@ -57,7 +59,26 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        public void FindOrgsCallback(OfficeRepresent[] officeRepresents)
+        public void FindOrgsToAddressAddCallback(OfficeRepresent[] officeRepresents)
+        {
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                List<string> values = new List<string>();
+                foreach (var officeRepresent in officeRepresents)
+                {
+                    values.Add(officeRepresent.Location);
+                }
+
+                InterfaceController.CreateAddressAddForm(values.ToArray());
+                InterfaceController.AdressAdd.AddNewOfficeEvent += client.AddNewOffice;
+            }
+            else
+            {
+                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
+            }
+        }
+
+        public void FindOrgsToMainCallback(OfficeRepresent[] officeRepresents)
         {
 
             if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
@@ -117,7 +138,7 @@ namespace WindowsFormsApp1
 
             Fullname = fullname;
             Org = org;
-            InterfaceController.Main.Invoke((Action<string>)InterfaceController.Main.LogedIn, fullname);
+            InterfaceController.Main.Invoke((Action<string, string>)InterfaceController.Main.LogedIn, fullname, org);
             InterfaceController.AutorizationSys.Invoke((Action)InterfaceController.AutorizationSys.Close);
         }
     }
