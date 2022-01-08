@@ -46,7 +46,6 @@ namespace Interface
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.autorizButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,7 +60,7 @@ namespace Interface
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(260, 24);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.ComboBox1_SelectedValueChanged);
             // 
             // label1
             // 
@@ -148,7 +147,7 @@ namespace Interface
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(40, 571);
+            this.button3.Location = new System.Drawing.Point(40, 577);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(187, 39);
             this.button3.TabIndex = 7;
@@ -163,7 +162,7 @@ namespace Interface
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(266, 571);
+            this.button4.Location = new System.Drawing.Point(266, 577);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(207, 39);
             this.button4.TabIndex = 8;
@@ -178,7 +177,7 @@ namespace Interface
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(513, 571);
+            this.button5.Location = new System.Drawing.Point(518, 577);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(251, 39);
             this.button5.TabIndex = 9;
@@ -221,6 +220,7 @@ namespace Interface
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(260, 24);
             this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.ComboBox2_SelectedValueChanged);
             // 
             // autorizButton
             // 
@@ -236,46 +236,36 @@ namespace Interface
             this.autorizButton.UseVisualStyleBackColor = false;
             this.autorizButton.Click += new System.EventHandler(this.AutorizButton_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(280, 492);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(246, 28);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Войти";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lucida Sans Typewriter", 13.5F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(11, 536);
+            this.label3.Location = new System.Drawing.Point(253, 492);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(272, 21);
+            this.label3.Size = new System.Drawing.Size(250, 21);
             this.label3.TabIndex = 18;
-            this.label3.Text = "Меню оператора организации: ";
+            this.label3.Text = "Меню оператора организации";
             this.label3.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 14.25F);
-            this.label4.Location = new System.Drawing.Point(14, 494);
+            this.label4.Font = new System.Drawing.Font("Georgia", 11.25F);
+            this.label4.Location = new System.Drawing.Point(12, 517);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 25);
+            this.label4.Size = new System.Drawing.Size(130, 18);
             this.label4.TabIndex = 19;
             this.label4.Text = "Улица Ленина 67";
+            this.label4.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(820, 614);
+            this.ClientSize = new System.Drawing.Size(820, 625);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.autorizButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
@@ -288,7 +278,7 @@ namespace Interface
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(836, 662);
+            this.MaximumSize = new System.Drawing.Size(836, 664);
             this.MinimumSize = new System.Drawing.Size(836, 570);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -318,7 +308,6 @@ namespace Interface
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button autorizButton;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }

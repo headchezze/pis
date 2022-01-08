@@ -72,6 +72,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.textBox1.Location = new System.Drawing.Point(154, 224);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -80,9 +81,11 @@
             // 
             // textBox2
             // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.textBox2.Location = new System.Drawing.Point(154, 263);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(275, 21);
             this.textBox2.TabIndex = 4;
             // 

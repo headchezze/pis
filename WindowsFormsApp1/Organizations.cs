@@ -47,17 +47,18 @@ namespace Interface
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void ComboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            comboBox2.Text = "";
+            comboBox2.SelectedValue = null;
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
             comboBox1.Text = "";
             comboBox1.SelectedValue = null;
         }
-
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -132,32 +133,6 @@ namespace Interface
             FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
         }
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if (button2.Text == "Войти")
-            {
-                button2.Text = "Выйти";
-                MessageBox.Show("Вы успешно вошли в систему");
-                this.Width = 835;
-                this.Height = 662;
-                label3.Visible = true;
-                button3.Visible = true;
-                button4.Visible = true;
-                button5.Visible = true;
-            }
-            else
-            {
-                button2.Text = "Войти";
-                MessageBox.Show("Вы успешно вышли в систему");
-                this.Width = 836;
-                this.Height = 577;
-                label3.Visible = false;
-                button3.Visible = false;
-                button4.Visible = false;
-                button5.Visible = false;
-            }
-        }
-
         public void UpdateOrgAndTypesCombo(string[] orgs, string[] types)
         {
             comboBox1.Items.AddRange(orgs);
@@ -172,12 +147,13 @@ namespace Interface
 
         public void LogedIn(string fullname, string org)
         {
-            label4.Text = fullname + Environment.NewLine + org;
+            label4.Text = "Работник: "  + fullname + Environment.NewLine + "Организация: " + org;
             InterfaceController.Organization = org;
             autorizButton.Visible = false;
             this.Width = 835;
-            this.Height = 662;
+            this.Height = 664;
             label3.Visible = true;
+            label4.Visible = true;
             button3.Visible = true;
             button4.Visible = true;
             button5.Visible = true;
