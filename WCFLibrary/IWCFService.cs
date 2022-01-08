@@ -40,9 +40,6 @@ namespace WCFLibrary
         [OperationContract]
         void DeleteProductFromOffice(int id, OfficeProductsRepresent officeProductsRepresent);
 
-        [OperationContract]
-        void DeleteOffice(int id, OfficeRepresent officeRepresent);
-
         [OperationContract(IsOneWay = true)]
         void GetOrgsAndTypes(int id);
 
@@ -50,7 +47,10 @@ namespace WCFLibrary
         void Login(int id, string login, string password);
 
         [OperationContract(IsOneWay = true)]
-        void AddNewOffice(int id, string org, string address);
+        void AddNewOffice(int id, string org, string addressTo, string adressFrom = "");
+
+        [OperationContract(IsOneWay = true)]
+        void DeleteOffice(int id, string org, string address);
 
     }
 
@@ -66,8 +66,6 @@ namespace WCFLibrary
         [OperationContract]
         string DeleteProductFromOfficeCallback(OfficeProductsRepresent officeProductsRepresent);
 
-        [OperationContract]
-        string DeleteOfficeCallback(OfficeRepresent officeRepresent);
         [OperationContract]
         void FindProductsByOfficeCallback(OfficeRepresent office);
 
@@ -85,6 +83,9 @@ namespace WCFLibrary
         
         [OperationContract(IsOneWay = true)]
         void AddNewOfficeCallback(bool isCreated);
+
+        [OperationContract(IsOneWay = true)]
+        void DeleteOfficeCallback(bool isDeleted);
 
     }
 }

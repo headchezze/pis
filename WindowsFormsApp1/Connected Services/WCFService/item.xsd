@@ -89,19 +89,6 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeleteOffice">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresent" nillable="true" type="q5:OfficeRepresent" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteOfficeResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetOrgsAndTypes">
     <xs:complexType>
       <xs:sequence>
@@ -123,6 +110,16 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element minOccurs="0" name="org" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="addressTo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="adressFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteOffice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="org" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -130,7 +127,7 @@
   <xs:element name="AddProductToOfficeCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeProductsRepresent" nillable="true" type="q6:ArrayOfOfficeProductsRepresent" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeProductsRepresent" nillable="true" type="q5:ArrayOfOfficeProductsRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -144,7 +141,7 @@
   <xs:element name="CreateNewProductCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="productRepresent" nillable="true" type="q7:ProductRepresent" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="productRepresent" nillable="true" type="q6:ProductRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -158,7 +155,7 @@
   <xs:element name="DeleteProductFromOfficeCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeProductsRepresent" nillable="true" type="q8:OfficeProductsRepresent" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeProductsRepresent" nillable="true" type="q7:OfficeProductsRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,24 +166,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeleteOfficeCallback">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresent" nillable="true" type="q9:OfficeRepresent" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteOfficeCallbackResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteOfficeCallbackResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="FindProductsByOfficeCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="office" nillable="true" type="q10:OfficeRepresent" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="office" nillable="true" type="q8:OfficeRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -198,22 +181,22 @@
   <xs:element name="FindOrgsToMainCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresents" nillable="true" type="q11:ArrayOfOfficeRepresent" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresents" nillable="true" type="q9:ArrayOfOfficeRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FindOrgsToAddressAddCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresents" nillable="true" type="q12:ArrayOfOfficeRepresent" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFLibrary" minOccurs="0" name="officeRepresents" nillable="true" type="q10:ArrayOfOfficeRepresent" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetOrgsAndTypesCallback">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="org" nillable="true" type="q13:ArrayOfstring" />
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="org" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q12:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -229,6 +212,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isCreated" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteOfficeCallback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -13,7 +13,7 @@ namespace Interface
 {
     public partial class AdressAdd : Form
     {
-        public delegate void AddNewOffice(int id, string org, string address);
+        public delegate void AddNewOffice(int id, string org, string addressTo, string adressFrom = "");
         public event AddNewOffice AddNewOfficeEvent;
         public AdressAdd()
         {
@@ -30,7 +30,14 @@ namespace Interface
             textBox1.Text = textBox1.Text.Replace(",", " ");
             textBox1.Text = textBox1.Text.Replace(";", " ");
             textBox1.Text = textBox1.Text.Replace(".", " ");
-            AddNewOfficeEvent?.Invoke(InterfaceController.ID, InterfaceController.Organization, textBox1.Text);
+            if (comboBox1.SelectedItem != null)
+            {
+                AddNewOfficeEvent?.Invoke(InterfaceController.ID, InterfaceController.Organization, textBox1.Text, comboBox1.SelectedItem.ToString());
+            }
+            else
+            {
+                AddNewOfficeEvent?.Invoke(InterfaceController.ID, InterfaceController.Organization, textBox1.Text);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

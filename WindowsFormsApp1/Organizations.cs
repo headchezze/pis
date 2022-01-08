@@ -27,6 +27,7 @@ namespace Interface
         public event FormHandler FindOfficesEvent;
         public event FindProductsHandler FindProductsEvent;
         public event ComboHadler UpdateComboEvent;
+        public event FindProductsHandler DeleteOfficeEvent;
 
         public Form1()
         {
@@ -126,13 +127,6 @@ namespace Interface
             FindOfficesEvent?.Invoke(InterfaceController.ID, WindowsFormsApp1.WCFService.FindOfficeFlag.Main, organizName, organizType);
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView1.Rows[e.RowIndex].Selected = true; // Выделение всей строки
-            int cellCount = dataGridView1.Rows[e.RowIndex].Cells.Count;
-            FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-        }
-
         public void UpdateOrgAndTypesCombo(string[] orgs, string[] types)
         {
             comboBox1.Items.AddRange(orgs);
@@ -157,6 +151,24 @@ namespace Interface
             button3.Visible = true;
             button4.Visible = true;
             button5.Visible = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+           DeleteOfficeEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[rowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[rowIndex].Cells[1].Value.ToString());
+        }
+
+        public void DeleteSelectedRow(bool isDeleted)
+        {
+            if(isDeleted)
+                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Rows[e.RowIndex].Selected = true; // Выделение всей строки
+            FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
         }
     }
 }

@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
             InterfaceController.Main.UpdateComboEvent += client.GetOrgsAndTypes;
             InterfaceController.AutorizationSys.LoginEvent += client.Login;
             InterfaceController.Main.AddressAddEvent += client.FindOrgs;
+            InterfaceController.Main.DeleteOfficeEvent += client.DeleteOffice;
 
         }
 
@@ -49,9 +50,9 @@ namespace WindowsFormsApp1
             throw new NotImplementedException();
         }
 
-        public string DeleteOfficeCallback(OfficeRepresent officeRepresent)
+        public void DeleteOfficeCallback(bool isDeleted)
         {
-            throw new NotImplementedException();
+            InterfaceController.Main.Invoke((Action<bool>)InterfaceController.Main.DeleteSelectedRow, isDeleted);
         }
 
         public string DeleteProductFromOfficeCallback(OfficeProductsRepresent officeProductsRepresent)

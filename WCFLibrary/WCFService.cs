@@ -38,11 +38,6 @@ namespace WCFLibrary
             throw new NotImplementedException();
         }
 
-        public void DeleteOffice(int id, OfficeRepresent officeRepresent)
-        {
-            throw new NotImplementedException();
-        }
-
         public void DeleteProductFromOffice(int id, OfficeProductsRepresent officeProductsRepresent)
         {
             throw new NotImplementedException();
@@ -69,8 +64,15 @@ namespace WCFLibrary
                 };
 
                 IQueryable<Offices> offices = null;
-                offices = orgName != "" ? context.Offices.Where(i => i.Orgs.OrgName == orgName) : offices;
-                offices = orgType != "" ? context.Offices.Where(i => i.Orgs.Type == orgType) : offices;
+                if (orgName == "" && orgType == "")
+                {
+                    offices = context.Offices;
+                }
+                else
+                {
+                    offices = orgName != "" ? context.Offices.Where(i => i.Orgs.OrgName == orgName) : offices;
+                    offices = orgType != "" ? context.Offices.Where(i => i.Orgs.Type == orgType) : offices;
+                }
                 List<OfficeRepresent> list = new List<OfficeRepresent>();
 
                 foreach (Offices office in offices)
@@ -140,7 +142,7 @@ namespace WCFLibrary
             }
         }
 
-        public void AddNewOffice(int id, string org, string address)
+        public void AddNewOffice(int id, string org, string addressTo, string adressFrom = "")
         {
             ServerUser user = users.FirstOrDefault(i => i.ID == id);
             if (user != null)
@@ -148,13 +150,48 @@ namespace WCFLibrary
                 Offices office = new Offices()
                 {
                     OrgName = org,
-                    Adress = address
+                    Adress = addressTo
                 };
+
+                if (adressFrom != "")
+                {
+                    IQueryable<OfficeProducts> products = context.OfficeProducts.Where(i => i.Offices.Adress == adressFrom);
+                    foreach (OfficeProducts product in products)
+                    {
+                        OfficeProducts newProduct = new OfficeProducts()
+                        {
+                            Cost = product.Cost,
+                            CountProduct = product.CountProduct,
+                            Product = product.Product,
+                            Office = office.IdOffice
+                        };
+
+                        office.OfficeProducts.Add(newProduct);
+                    }
+                }
 
                 context.Offices.Add(office);
                 context.SaveChanges();
 
                 user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddNewOfficeCallback(true);
+            }
+        }
+
+        public void DeleteOffice(int id, string org, string address)
+        {
+            ServerUser user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                if(user.Worker.Organization == org)
+                {
+                    context.Offices.Remove(context.Offices.Where(i => i.Adress == address && i.OrgName == org).First());
+                    context.SaveChanges();
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteOfficeCallback(true);
+
+                    return;
+                }
+
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteOfficeCallback(false);
             }
         }
     }
