@@ -60,7 +60,7 @@ namespace Interface
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(260, 24);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.ComboBox1_SelectedValueChanged);
+            this.comboBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ComboBox1_MouseClick);
             // 
             // label1
             // 
@@ -107,7 +107,7 @@ namespace Interface
             this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.75F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -118,6 +118,7 @@ namespace Interface
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(815, 397);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Column1
@@ -221,7 +222,7 @@ namespace Interface
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(260, 24);
             this.comboBox2.TabIndex = 12;
-            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.ComboBox2_SelectedValueChanged);
+            this.comboBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ComboBox2_MouseClick);
             // 
             // autorizButton
             // 
@@ -240,10 +241,10 @@ namespace Interface
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans Typewriter", 13.5F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(253, 492);
+            this.label3.Font = new System.Drawing.Font("Lucida Sans Typewriter", 14.5F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(238, 491);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(250, 21);
+            this.label3.Size = new System.Drawing.Size(302, 23);
             this.label3.TabIndex = 18;
             this.label3.Text = "Меню оператора организации";
             this.label3.Visible = false;
@@ -251,10 +252,10 @@ namespace Interface
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Georgia", 11.25F);
+            this.label4.Font = new System.Drawing.Font("Georgia", 12.25F);
             this.label4.Location = new System.Drawing.Point(12, 517);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 18);
+            this.label4.Size = new System.Drawing.Size(146, 20);
             this.label4.TabIndex = 19;
             this.label4.Text = "Улица Ленина 67";
             this.label4.Visible = false;
@@ -264,7 +265,7 @@ namespace Interface
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(820, 625);
+            this.ClientSize = new System.Drawing.Size(820, 531);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.autorizButton);

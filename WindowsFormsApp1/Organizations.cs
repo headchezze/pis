@@ -49,18 +49,6 @@ namespace Interface
         }
 
 
-        private void ComboBox1_SelectedValueChanged(object sender, EventArgs e)
-        {
-            comboBox2.Text = "";
-            comboBox2.SelectedValue = null;
-        }
-
-        private void ComboBox2_SelectedValueChanged(object sender, EventArgs e)
-        {
-            comboBox1.Text = "";
-            comboBox1.SelectedValue = null;
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Thread.Sleep(4000);
@@ -161,14 +149,36 @@ namespace Interface
 
         public void DeleteSelectedRow(bool isDeleted)
         {
-            if(isDeleted)
+            if (isDeleted)
+            {
                 dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                MessageBox.Show("Филиал по выбранному адресу успешно удален","Подсказка");
+            }
+            else
+            {
+                MessageBox.Show("Другая организация", "Ошибка");
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Rows[e.RowIndex].Selected = true; // Выделение всей строки
             FindProductsEvent?.Invoke(InterfaceController.ID, dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Rows[e.RowIndex].Selected = true;
+        }
+
+        private void ComboBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            comboBox2.Text = "";
+        }
+
+        private void ComboBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            comboBox1.Text = "";
         }
     }
 }
