@@ -22,5 +22,18 @@ namespace WCFLibrary
     
         public virtual Offices Offices { get; set; }
         public virtual Products Products { get; set; }
+
+        public OfficeProducts(OfficeProducts product, int newAddress)
+        {
+            Cost = product.Cost;
+            CountProduct = product.CountProduct;
+            Product = product.Product;
+            Office = newAddress;
+        }
+
+        public OfficeProducts()
+        {
+
+        }
     }
 }

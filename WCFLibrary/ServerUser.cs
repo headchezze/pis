@@ -19,10 +19,28 @@ namespace WCFLibrary
             this.ID = ID;
             this.operationContext = operationContext;
         }
+        public ServerUser()
+        {
+            
+        }
 
         public void Login(WorkerPresent workerPresent)
         {
             Worker = workerPresent;
+        }
+
+        public bool FindUser(List<ServerUser> serverUsers, int userID)
+        {
+            if (serverUsers.FirstOrDefault(i => i.ID == userID) != null)
+            {
+                ID = userID;
+                operationContext = OperationContext.Current;
+                Worker = serverUsers.FirstOrDefault(i => i.ID == userID).Worker;
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

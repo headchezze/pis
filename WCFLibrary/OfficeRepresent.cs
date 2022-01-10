@@ -37,5 +37,16 @@ namespace WCFLibrary
             Organization = org;
             ProductsRepresents = products;
         }
+
+        public OfficeRepresent(string location, string org, IQueryable<OfficeProducts> products)
+        {
+            Location = location;
+            Organization = org;
+            ProductsRepresents = new List<OfficeProductsRepresent>();
+            foreach (OfficeProducts product in products)
+            {
+                ProductsRepresents.Add(new OfficeProductsRepresent(product.Product, product.Cost, product.CountProduct));
+            }
+        }
     }
 }

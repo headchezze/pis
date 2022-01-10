@@ -11,6 +11,7 @@ namespace WCFLibrary
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Offices
     {
@@ -27,5 +28,22 @@ namespace WCFLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OfficeProducts> OfficeProducts { get; set; }
         public virtual Orgs Orgs { get; set; }
+
+        public Offices(string address, string orgName)
+        {
+            Adress = address;
+            OrgName = orgName;
+            OfficeProducts = new HashSet<OfficeProducts>();
+        }
+
+        public void AddProducts(IQueryable<OfficeProducts> officeProducts)
+        {
+            foreach (OfficeProducts product in officeProducts)
+            {
+                OfficeProducts newProduct = new OfficeProducts(product, IdOffice);
+
+                OfficeProducts.Add(newProduct);
+            }
+        }
     }
 }

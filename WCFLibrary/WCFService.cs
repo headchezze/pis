@@ -45,8 +45,8 @@ namespace WCFLibrary
 
         public void Disconnect(int id)
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if(user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
                 users.Remove(user);
             }
@@ -54,8 +54,8 @@ namespace WCFLibrary
 
         public void FindOrgs(int id, FindOfficeFlag flag, string orgName = "", string orgType = "")
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
                 Dictionary<FindOfficeFlag,FindOfficesDelegate> methods = new Dictionary<FindOfficeFlag, FindOfficesDelegate>()
                 {
@@ -63,42 +63,18 @@ namespace WCFLibrary
                     { FindOfficeFlag.AddressAdd, user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindOrgsToAddressAddCallback }
                 };
 
-                IQueryable<Offices> offices = null;
-                if (orgName == "" && orgType == "")
-                {
-                    offices = context.Offices;
-                }
-                else
-                {
-                    offices = orgName != "" ? context.Offices.Where(i => i.Orgs.OrgName == orgName) : offices;
-                    offices = orgType != "" ? context.Offices.Where(i => i.Orgs.Type == orgType) : offices;
-                }
-                List<OfficeRepresent> list = new List<OfficeRepresent>();
-
-                foreach (Offices office in offices)
-                {
-                    Console.WriteLine(office.OrgName + " " + office.Adress + office.Orgs.Type + "\n");
-                    list.Add(new OfficeRepresent(office.Adress, office.OrgName, office.Orgs.Type));
-                }
+                List<OfficeRepresent> list = new List<OfficeRepresent>().AddOffices(context.Offices.GetOffices(orgName, orgType));
 
                 methods[flag]?.Invoke(list);
-
-            }
+            }   
         }
 
-        public void FindProductsByOffice(int id, string orgName, string officeLocation)
+        public void FindProductsByOffice(int id, string orgName, string address)
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
-                var products = context.OfficeProducts.Where(i => i.Offices.Adress == officeLocation && i.Offices.OrgName == orgName);
-                List<OfficeProductsRepresent> officeProducts = new List<OfficeProductsRepresent>();
-                foreach (OfficeProducts product in products)
-                {
-                    officeProducts.Add(new OfficeProductsRepresent(product.Product, product.Cost, product.CountProduct));
-                }
-
-                OfficeRepresent office = new OfficeRepresent(officeLocation, orgName, officeProducts);
+                OfficeRepresent office = new OfficeRepresent(address, orgName, context.OfficeProducts.GetProducts(address, orgName));
 
                 user.operationContext.GetCallbackChannel<IWCFServiceCallback>().FindProductsByOfficeCallback(office);
             }
@@ -106,8 +82,8 @@ namespace WCFLibrary
 
         public void GetOrgsAndTypes(int id)
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
                 List<string> orgs = new List<string>();
                 foreach (Orgs org in context.Orgs.ToList())
@@ -126,14 +102,14 @@ namespace WCFLibrary
 
         public void Login(int id, string login, string password)
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
-                IQueryable<Workers> workers = context.Workers.Where(i => i.Login == login && i.Password == password);
+                Workers worker = context.Workers.GetWorker(login, password);
 
-                if(workers.Count() > 0)
+                if(worker != null)
                 {
-                    user.Login(new WorkerPresent(workers.First().FullName, workers.First().Org, workers.First().Login, workers.First().Password));
+                    user.Login(new WorkerPresent(worker.FullName, worker.Org, worker.Login, worker.Password));
                     user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(user.Worker.Fullname, user.Worker.Organization);
                     return;
                 }
@@ -142,32 +118,17 @@ namespace WCFLibrary
             }
         }
 
-        public void AddNewOffice(int id, string org, string addressTo, string adressFrom = "")
+        public void AddNewOffice(int id, string org, string addressTo, string addressFrom = "")
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
-                Offices office = new Offices()
-                {
-                    OrgName = org,
-                    Adress = addressTo
-                };
+                Offices office = new Offices(addressTo, org);
 
-                if (adressFrom != "")
+                if (addressFrom != "")
                 {
-                    IQueryable<OfficeProducts> products = context.OfficeProducts.Where(i => i.Offices.Adress == adressFrom);
-                    foreach (OfficeProducts product in products)
-                    {
-                        OfficeProducts newProduct = new OfficeProducts()
-                        {
-                            Cost = product.Cost,
-                            CountProduct = product.CountProduct,
-                            Product = product.Product,
-                            Office = office.IdOffice
-                        };
-
-                        office.OfficeProducts.Add(newProduct);
-                    }
+                    IQueryable<OfficeProducts> products = context.OfficeProducts.GetProducts(addressFrom, org);
+                    office.AddProducts(products);
                 }
 
                 context.Offices.Add(office);
@@ -179,12 +140,12 @@ namespace WCFLibrary
 
         public void DeleteOffice(int id, string org, string address)
         {
-            ServerUser user = users.FirstOrDefault(i => i.ID == id);
-            if (user != null)
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
             {
                 if(user.Worker.Organization == org)
                 {
-                    context.Offices.Remove(context.Offices.Where(i => i.Adress == address && i.OrgName == org).First());
+                    context.Offices.Remove(context.Offices.GetOffice(org, address)); ;
                     context.SaveChanges();
                     user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteOfficeCallback(true);
 

@@ -51,7 +51,7 @@ namespace Interface
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Thread.Sleep(4000);
+            Thread.Sleep(1000);
             AddressAddEvent?.Invoke(InterfaceController.ID, WindowsFormsApp1.WCFService.FindOfficeFlag.AddressAdd, InterfaceController.Organization, "");
         }
 
