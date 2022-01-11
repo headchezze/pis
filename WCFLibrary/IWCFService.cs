@@ -52,6 +52,12 @@ namespace WCFLibrary
         [OperationContract(IsOneWay = true)]
         void DeleteOffice(int id, string org, string address);
 
+        [OperationContract(IsOneWay = true)]
+        void GetProducts(int id, string address, string org);
+
+        [OperationContract(IsOneWay = true)]
+        void AddProductsToOffice(int id, string address, string org, List<OfficeProductsRepresent> products);
+
     }
 
     public interface IWCFServiceCallback
@@ -86,6 +92,12 @@ namespace WCFLibrary
 
         [OperationContract(IsOneWay = true)]
         void DeleteOfficeCallback(bool isDeleted);
+
+        [OperationContract(IsOneWay = true)]
+        void GetProductsCallback(List<ProductRepresent> products, string address, string org);
+
+        [OperationContract(IsOneWay = true)]
+        void AddProductsToOfficeCallback(bool isAdded);
 
     }
 }

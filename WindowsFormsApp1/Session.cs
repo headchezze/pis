@@ -40,6 +40,11 @@ namespace WindowsFormsApp1
                 InterfaceController.AdressAdd.Invoke((Action)InterfaceController.AdressAdd.ShowAddressMessage);
         }
 
+        public void AddProductsToOfficeCallback(bool isAdded)
+        {
+            
+        }
+
         public string AddProductToOfficeCallback(OfficeProductsRepresent[] officeProductsRepresent)
         {
             throw new NotImplementedException();
@@ -110,6 +115,7 @@ namespace WindowsFormsApp1
 
 
                 InterfaceController.CreateSalesForm(office.Organization, office.Location, products);
+                InterfaceController.Sales.ItemAddCreateEvent += client.GetProducts;
             }
             else
             {
@@ -122,6 +128,26 @@ namespace WindowsFormsApp1
             if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
             {
                 InterfaceController.Main.Invoke((Action<string[], string[]>)InterfaceController.Main.UpdateOrgAndTypesCombo, org, types);
+            }
+            else
+            {
+                client = new WCFServiceClient(new System.ServiceModel.InstanceContext(this));
+            }
+        }
+
+        public void GetProductsCallback(ProductRepresent[] products, string address, string org)
+        {
+            if (client.InnerChannel.State != System.ServiceModel.CommunicationState.Faulted)
+            {
+                List<string> names = new List<string>();
+                
+                foreach (ProductRepresent product in products)
+                {
+                    names.Add(product.Name);
+                }
+
+                InterfaceController.CreateProductAddForm(names, address, org);
+                InterfaceController.AddItemToAdress.AddItemsEvent += client.AddProductsToOffice;
             }
             else
             {

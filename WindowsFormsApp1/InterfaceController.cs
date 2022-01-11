@@ -18,6 +18,8 @@ namespace WindowsFormsApp1
         public AutorizationSys AutorizationSys { get; private set; }
         public AdressAdd AdressAdd { get; private set; }
 
+        public AddItemToAdress AddItemToAdress { get; private set; }
+
         public InterfaceController()
         {
             Main = new Form1();
@@ -47,6 +49,14 @@ namespace WindowsFormsApp1
         public void CreateLoginForm()
         {
             Thread thread = new Thread(delegate () { AutorizationSys.ShowDialog(); });
+            thread.Start();
+        }
+
+        public void CreateProductAddForm(List<string> products, string address, string org)
+        {
+            AddItemToAdress = new AddItemToAdress(products, address, org);
+            Thread thread = new Thread(delegate () { AddItemToAdress.ShowDialog(); });
+            thread.ApartmentState = ApartmentState.STA;
             thread.Start();
         }
 

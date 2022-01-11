@@ -219,6 +219,12 @@ namespace WindowsFormsApp1.WCFService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -226,6 +232,32 @@ namespace WindowsFormsApp1.WCFService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
             }
         }
         
@@ -308,6 +340,18 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/DeleteOffice")]
         System.Threading.Tasks.Task DeleteOfficeAsync(int id, string org, string address);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetProducts")]
+        void GetProducts(int id, string address, string org);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetProducts")]
+        System.Threading.Tasks.Task GetProductsAsync(int id, string address, string org);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/AddProductsToOffice")]
+        void AddProductsToOffice(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/AddProductsToOffice")]
+        System.Threading.Tasks.Task AddProductsToOfficeAsync(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -342,6 +386,12 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/DeleteOfficeCallback")]
         void DeleteOfficeCallback(bool isDeleted);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetProductsCallback")]
+        void GetProductsCallback(WindowsFormsApp1.WCFService.ProductRepresent[] products, string address, string org);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/AddProductsToOfficeCallback")]
+        void AddProductsToOfficeCallback(bool isAdded);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -458,6 +508,22 @@ namespace WindowsFormsApp1.WCFService {
         
         public System.Threading.Tasks.Task DeleteOfficeAsync(int id, string org, string address) {
             return base.Channel.DeleteOfficeAsync(id, org, address);
+        }
+        
+        public void GetProducts(int id, string address, string org) {
+            base.Channel.GetProducts(id, address, org);
+        }
+        
+        public System.Threading.Tasks.Task GetProductsAsync(int id, string address, string org) {
+            return base.Channel.GetProductsAsync(id, address, org);
+        }
+        
+        public void AddProductsToOffice(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products) {
+            base.Channel.AddProductsToOffice(id, address, org, products);
+        }
+        
+        public System.Threading.Tasks.Task AddProductsToOfficeAsync(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products) {
+            return base.Channel.AddProductsToOfficeAsync(id, address, org, products);
         }
     }
 }

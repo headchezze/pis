@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace Interface
 {
     public partial class Sales : Form
     {
+        public delegate void ItemAddCreateHandler(int id, string address, string org);
 
+        public event ItemAddCreateHandler ItemAddCreateEvent;
         public Sales()
         {
             InitializeComponent();
@@ -38,6 +41,11 @@ namespace Interface
                 dataGridView1.Rows.Add(products[i][0], products[i][1], products[i][2]);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ItemAddCreateEvent?.Invoke(InterfaceController.ID, label2.Text, label1.Text);
         }
     }
 }

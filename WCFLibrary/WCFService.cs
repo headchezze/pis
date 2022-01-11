@@ -155,5 +155,31 @@ namespace WCFLibrary
                 user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteOfficeCallback(false);
             }
         }
+
+        public void GetProducts(int id, string address, string org)
+        {
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
+            {
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().GetProductsCallback(new List<ProductRepresent>().AddProducts(context.Products), address, org);
+            }
+        }
+
+        public void AddProductsToOffice(int id, string address, string org, List<OfficeProductsRepresent> products)
+        {
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
+            {
+                Offices office = new Offices();
+                office = context.Offices.GetOffice(org, address);
+
+                foreach (OfficeProductsRepresent product in products)
+                {
+                    context.OfficeProducts.Add(new OfficeProducts(product, office.IdOffice));
+                }
+                context.SaveChanges();
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddProductsToOfficeCallback(true);
+            }
+        }
     }
 }

@@ -88,6 +88,12 @@
   <wsdl:message name="IWCFService_DeleteOffice_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOffice" />
   </wsdl:message>
+  <wsdl:message name="IWCFService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_AddProductsToOffice_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductsToOffice" />
+  </wsdl:message>
   <wsdl:message name="IWCFService_AddProductToOfficeCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AddProductToOfficeCallback" />
   </wsdl:message>
@@ -130,6 +136,12 @@
   <wsdl:message name="IWCFService_DeleteOfficeCallback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DeleteOfficeCallback" />
   </wsdl:message>
+  <wsdl:message name="IWCFService_GetProductsCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsCallback" />
+  </wsdl:message>
+  <wsdl:message name="IWCFService_AddProductsToOfficeCallback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AddProductsToOfficeCallback" />
+  </wsdl:message>
   <wsdl:portType name="IWCFService">
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/Connect" message="tns:IWCFService_Connect_InputMessage" />
@@ -170,6 +182,12 @@
     <wsdl:operation name="DeleteOffice">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/DeleteOffice" message="tns:IWCFService_DeleteOffice_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/GetProducts" message="tns:IWCFService_GetProducts_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductsToOffice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddProductsToOffice" message="tns:IWCFService_AddProductsToOffice_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddProductToOfficeCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddProductToOfficeCallback" message="tns:IWCFService_AddProductToOfficeCallback_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFService/AddProductToOfficeCallbackResponse" message="tns:IWCFService_AddProductToOfficeCallback_InputCallbackMessage" />
@@ -203,6 +221,12 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteOfficeCallback">
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/DeleteOfficeCallback" message="tns:IWCFService_DeleteOfficeCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/GetProductsCallback" message="tns:IWCFService_GetProductsCallback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductsToOfficeCallback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFService/AddProductsToOfficeCallback" message="tns:IWCFService_AddProductsToOfficeCallback_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IWCFService" type="tns:IWCFService">
@@ -292,6 +316,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductsToOffice">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddProductsToOffice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="AddProductToOfficeCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/AddProductToOfficeCallback" style="document" />
       <wsdl:input>
@@ -360,6 +396,18 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteOfficeCallback">
       <soap12:operation soapAction="http://tempuri.org/IWCFService/DeleteOfficeCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/GetProductsCallback" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductsToOfficeCallback">
+      <soap12:operation soapAction="http://tempuri.org/IWCFService/AddProductsToOfficeCallback" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

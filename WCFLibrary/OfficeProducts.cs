@@ -35,5 +35,13 @@ namespace WCFLibrary
         {
 
         }
+
+        public OfficeProducts(OfficeProductsRepresent product, int newAddress)
+        {
+            Cost = product.Cost;
+            CountProduct = product.Count;
+            Product = product.Product;
+            Office = newAddress;
+        }
     }
 }

@@ -41,5 +41,27 @@ namespace WCFLibrary
 
             return represents;
         }
+
+        public static List<ProductRepresent> AddProducts(this List<ProductRepresent> products, IQueryable<Products> systemProducts)
+        {
+            foreach(Products product in systemProducts)
+            {
+                products.Add(new ProductRepresent(product.ProductName, product.Desription));
+            }
+
+            return products;
+        }
+
+        public static List<string> GetProductsNames(this ProductRepresent[] products)
+        {
+            List<string> names = new List<string>();
+
+            foreach(ProductRepresent product in products)
+            {
+                names.Add(product.Name);
+            }
+
+            return names;
+        }
     }
 }
