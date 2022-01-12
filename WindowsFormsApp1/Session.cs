@@ -60,9 +60,9 @@ namespace WindowsFormsApp1
             InterfaceController.Main.Invoke((Action<bool>)InterfaceController.Main.DeleteSelectedRow, isDeleted);
         }
 
-        public string DeleteProductFromOfficeCallback(OfficeProductsRepresent officeProductsRepresent)
+        public void DeleteProductFromOfficeCallback(bool isDeleted)
         {
-            throw new NotImplementedException();
+            InterfaceController.Sales.Invoke((Action<bool>)InterfaceController.Sales.DeleteProduct, isDeleted);
         }
 
         public void FindOrgsToAddressAddCallback(OfficeRepresent[] officeRepresents)
@@ -116,6 +116,7 @@ namespace WindowsFormsApp1
 
                 InterfaceController.CreateSalesForm(office.Organization, office.Location, products);
                 InterfaceController.Sales.ItemAddCreateEvent += client.GetProducts;
+                InterfaceController.Sales.ItemDeleteEvent += client.DeleteProductFromOffice;
             }
             else
             {

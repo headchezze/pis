@@ -16,7 +16,7 @@ namespace WCFLibrary
         List<ServerUser> users = new List<ServerUser>();
         pisanimalsEntities context = new pisanimalsEntities();
 
-        static int nextID = 1;
+        static int nextID = 0;
 
         public void AddProductToOffice(int id, ICollection<OfficeProductsRepresent> officeProductsRepresent)
         {
@@ -109,8 +109,8 @@ namespace WCFLibrary
 
                 if(worker != null)
                 {
-                    user.Login(new WorkerPresent(worker.FullName, worker.Org, worker.Login, worker.Password));
-                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(user.Worker.Fullname, user.Worker.Organization);
+                    users[id].Login(new WorkerPresent(worker.FullName, worker.Org, worker.Login, worker.Password));
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().LoginCallback(users[id].Worker.Fullname, users[id].Worker.Organization);
                     return;
                 }
 
@@ -170,15 +170,38 @@ namespace WCFLibrary
             ServerUser user = new ServerUser();
             if (user.FindUser(users, id))
             {
-                Offices office = new Offices();
-                office = context.Offices.GetOffice(org, address);
-
-                foreach (OfficeProductsRepresent product in products)
+                if (user.Worker.Organization == org)
                 {
-                    context.OfficeProducts.Add(new OfficeProducts(product, office.IdOffice));
+                    Offices office = new Offices();
+                    office = context.Offices.GetOffice(org, address);
+
+                    foreach (OfficeProductsRepresent product in products)
+                    {
+                        context.OfficeProducts.Add(new OfficeProducts(product, office.IdOffice));
+                    }
+                    context.SaveChanges();
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddProductsToOfficeCallback(true);
+
+                    return;
                 }
-                context.SaveChanges();
-                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddProductsToOfficeCallback(true);
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().AddProductsToOfficeCallback(false);
+            }
+        }
+
+        public void DeleteProductFromOffice(int id, string address, string org, string product)
+        {
+            ServerUser user = new ServerUser();
+            if (user.FindUser(users, id))
+            {
+                if (user.Worker.Organization == org)
+                {
+                    context.OfficeProducts.Remove(context.OfficeProducts.GetProduct(address, org, product));
+                    context.SaveChanges();
+                    user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteProductFromOfficeCallback(true);
+
+                    return;
+                }
+                user.operationContext.GetCallbackChannel<IWCFServiceCallback>().DeleteProductFromOfficeCallback(false);
             }
         }
     }

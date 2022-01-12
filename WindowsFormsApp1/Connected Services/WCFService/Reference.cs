@@ -311,12 +311,6 @@ namespace WindowsFormsApp1.WCFService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewProduct", ReplyAction="http://tempuri.org/IWCFService/CreateNewProductResponse")]
         System.Threading.Tasks.Task CreateNewProductAsync(int id, WindowsFormsApp1.WCFService.ProductRepresent productRepresent);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeResponse")]
-        void DeleteProductFromOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOffice", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeResponse")]
-        System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/GetOrgsAndTypes")]
         void GetOrgsAndTypes(int id);
         
@@ -352,6 +346,12 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/AddProductsToOffice")]
         System.Threading.Tasks.Task AddProductsToOfficeAsync(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/DeleteProductFromOffice")]
+        void DeleteProductFromOffice(int id, string address, string org, string product);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/DeleteProductFromOffice")]
+        System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, string address, string org, string product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -362,9 +362,6 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/CreateNewProductCallback", ReplyAction="http://tempuri.org/IWCFService/CreateNewProductCallbackResponse")]
         string CreateNewProductCallback(WindowsFormsApp1.WCFService.ProductRepresent productRepresent);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/DeleteProductFromOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/DeleteProductFromOfficeCallbackResponse")]
-        string DeleteProductFromOfficeCallback(WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFService/FindProductsByOfficeCallback", ReplyAction="http://tempuri.org/IWCFService/FindProductsByOfficeCallbackResponse")]
         void FindProductsByOfficeCallback(WindowsFormsApp1.WCFService.OfficeRepresent office);
@@ -392,6 +389,9 @@ namespace WindowsFormsApp1.WCFService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/AddProductsToOfficeCallback")]
         void AddProductsToOfficeCallback(bool isAdded);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IWCFService/DeleteProductFromOfficeCallback")]
+        void DeleteProductFromOfficeCallback(bool isDeleted);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -470,14 +470,6 @@ namespace WindowsFormsApp1.WCFService {
             return base.Channel.CreateNewProductAsync(id, productRepresent);
         }
         
-        public void DeleteProductFromOffice(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent) {
-            base.Channel.DeleteProductFromOffice(id, officeProductsRepresent);
-        }
-        
-        public System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, WindowsFormsApp1.WCFService.OfficeProductsRepresent officeProductsRepresent) {
-            return base.Channel.DeleteProductFromOfficeAsync(id, officeProductsRepresent);
-        }
-        
         public void GetOrgsAndTypes(int id) {
             base.Channel.GetOrgsAndTypes(id);
         }
@@ -524,6 +516,14 @@ namespace WindowsFormsApp1.WCFService {
         
         public System.Threading.Tasks.Task AddProductsToOfficeAsync(int id, string address, string org, WindowsFormsApp1.WCFService.OfficeProductsRepresent[] products) {
             return base.Channel.AddProductsToOfficeAsync(id, address, org, products);
+        }
+        
+        public void DeleteProductFromOffice(int id, string address, string org, string product) {
+            base.Channel.DeleteProductFromOffice(id, address, org, product);
+        }
+        
+        public System.Threading.Tasks.Task DeleteProductFromOfficeAsync(int id, string address, string org, string product) {
+            return base.Channel.DeleteProductFromOfficeAsync(id, address, org, product);
         }
     }
 }

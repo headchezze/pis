@@ -63,5 +63,10 @@ namespace WCFLibrary
 
             return names;
         }
+
+        public static OfficeProducts GetProduct(this DbSet<OfficeProducts> products, string address, string org, string productName)
+        {
+            return products.Where(i => i.Product == productName && i.Offices.Adress == address && i.Offices.OrgName == org).First();
+        }
     }
 }
